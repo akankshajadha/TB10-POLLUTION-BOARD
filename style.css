@@ -21,14 +21,16 @@ html, body {
     width: 148px !important;
     height: 148px !important;
     position: absolute !important;
-    top: 1px !important;
-    left: 1px !important;
+    top: 0px !important;
+    left: 0px !important;
+    bottom:1px;
+    
     /* padding-top: 3px !important; */
     /* padding-left: 3px; */
     /* background-color: #000000 !important; */
     /* border: 1px solid #ff6600 !important; */
     /* box-sizing: border-box !important; */
-    /* border-bottom: #ffffff; */
+ border-bottom: #ffffff;
     /* overflow: hidden !important; */
 }
 
@@ -94,8 +96,8 @@ html, body {
 .col-unit  { width: 28%; color: #00ffff; font-size: 7.5px !important; }
 
 /* Parameter Values */
-.param-name { font-size: 7.5px !important; font-weight: bold; }
-.param-val  { font-size: 10px !important; font-weight: bold; }
+.param-name { font-size: 7.1px !important; font-weight: bold; }
+.param-val  { font-size: 8px !important; font-weight: bold; }
 .param-unit { font-size: 7.5px !important; }
 
 /* Colors */
