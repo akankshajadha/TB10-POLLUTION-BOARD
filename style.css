@@ -1,0 +1,103 @@
+/* Load font locally for offline TB10 operation */
+@font-face {
+    font-family: 'VT323';
+    src: url('./VT323-Regular.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+    font-family: 'VT323', monospace;
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    background-color: #000000;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Outer Orange Frame & Black Matrix Background */
+.led-screen {
+    width: 150px !important;
+    height: 150px !important;
+    background-color: #000000;
+    border: 2px solid #ff6600 !important; /* Outer orange frame */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+     display: flex;
+}
+
+/* Strict Table Rules to Force Grid Line Rendering on Hardware */
+.board-table {
+    width: 100% !important;
+    height: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+}
+
+.board-table th,
+.board-table td {
+    border: 1px solid #ffffff !important; /* Forces vertical grid lines on TB10 */
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Header Row */
+.title-cell {
+    color: #00ffff;
+    font-size: 11px !important;
+    font-weight: bold;
+    height: 17px;
+    letter-spacing: 0.5px;
+}
+
+/* Date & Time Flex Container */
+.datetime-cell {
+    padding: 0 2px !important;
+    height: 16px;
+    background-color: #000000;
+}
+
+.datetime-flex {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100%;
+}
+
+.date-txt, .time-txt {
+    color: #ffffff;
+    font-size: 8px !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.5px;
+    font-weight: bold;
+}
+
+/* Table Column Header */
+.header-row {
+    height: 14px;
+}
+
+.col-param { width: 44%; color: #00ffff; font-size: 8px !important; }
+.col-count { width: 28%; color: #00ffff; font-size: 8px !important; }
+.col-unit  { width: 28%; color: #00ffff; font-size: 8px !important; }
+
+/* Data Rows */
+.param-name { font-size: 8px !important; font-weight: bold; }
+.param-val  { font-size: 11px !important; font-weight: bold; }
+.param-unit { font-size: 8px !important; }
+
+/* Color Mapping for LED Hardware Panels */
+.col-orange { color: #ff6600 !important; }
+.col-green  { color: #00ff00 !important; }
+.col-red    { color: #ff3333 !important; }
