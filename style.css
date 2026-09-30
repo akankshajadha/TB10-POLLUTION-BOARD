@@ -13,6 +13,7 @@ html, body {
     overflow: hidden !important;
     font-family: 'VT323', monospace;
     box-sizing: border-box !important;
+  
 }
 
 /* Outer Container - Restores Equal 1px Orange Frame on ALL 4 Sides */
@@ -22,10 +23,13 @@ html, body {
     position: absolute !important;
     top: 1px !important;
     left: 1px !important;
+    padding-top: 3px !important;
+    padding-left: 3px;
     /* background-color: #000000 !important; */
     /* border: 1px solid #ff6600 !important; */
-    box-sizing: border-box !important;
-    overflow: hidden !important;
+    /* box-sizing: border-box !important; */
+    /* border-bottom: #ffffff; */
+    /* overflow: hidden !important; */
 }
 
 /* Table Setup */
@@ -80,7 +84,7 @@ html, body {
 }
 
 .dt-space {
-    margin-left: 6px !important;
+    margin-right: 6px !important;
 }
 
 /* Parameter Column Headers - Vertical Grid Lines START Here */
