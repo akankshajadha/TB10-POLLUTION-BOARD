@@ -9,22 +9,27 @@
 <body>
     <div class="led-screen">
         <table class="board-table">
+            <!-- Header Title Row (With Top White Border) -->
             <tr class="title-row">
                 <td colspan="3" class="title-cell">CONSTRUCTION BOARD</td>
             </tr>
+            
+            <!-- Date & Time Row (Full Width - No Vertical Split) -->
             <tr class="datetime-row">
                 <td colspan="3" class="datetime-cell">
-                    <div class="datetime-flex">
-                        <span class="date-txt">DATE:<span id="dateDisplay">30/09/2026</span></span>
-                        <span class="time-txt">TIME:<span id="timeDisplay">11:38:51 AM</span></span>
-                    </div>
+                    <span class="dt-txt">DATE:<span id="dateDisplay">30/09/2026</span></span>
+                    <span class="dt-txt dt-space">TIME:<span id="timeDisplay">02:26:27 PM</span></span>
                 </td>
             </tr>
+
+            <!-- Parameter Column Headers (Vertical Grid Lines START Here) -->
             <tr class="header-row">
                 <th class="col-param">PARAMETER</th>
                 <th class="col-count">COUNT</th>
                 <th class="col-unit">UNIT</th>
             </tr>
+
+            <!-- Telemetry Data Rows -->
             <tr>
                 <td class="param-name col-orange">TEMPERATURE</td>
                 <td class="param-val col-green" id="tempDisplay">30.6</td>
