@@ -17,8 +17,8 @@ html, body {
 
 /* 2. Outer Container - Scaled to 148x148 to keep the 1px orange border visible inside all 4 edges */
 .led-screen {
-    width: 150px !important;
-    height: 149px !important; /* Prevents bottom border from getting pushed off-screen */
+    width: 148px !important;
+    height: 148px !important; /* Prevents bottom border from getting pushed off-screen */
     background-color: #000000 !important;
     box-sizing: border-box !important;
     
@@ -61,14 +61,14 @@ html, body {
     color: #00ffff;
     font-size: 10px !important;
     font-weight: bold;
-    height: 16px;
+    height: 15px;
     letter-spacing: 0.5px;
 }
 
 /* Date & Time Row */
 .datetime-cell {
     padding: 0 1px !important;
-    height: 15px;
+    height: 14px;
     background-color: #000000;
 }
 
@@ -93,12 +93,12 @@ html, body {
 .col-count { width: 28%; color: #00ffff; font-size: 7.5px !important; }
 .col-unit  { width: 28%; color: #00ffff; font-size: 7.5px !important; }
 
-/* Parameter Values */
-.param-name { font-size: 7.0px !important; font-weight: bold; }
-.param-val  { font-size: 8px !important; font-weight: bold; }
+/* Parameter Rows */
+.param-name { font-size: 7.5px !important; font-weight: bold; }
+.param-val  { font-size: 10px !important; font-weight: bold; }
 .param-unit { font-size: 7.5px !important; }
 
-/* Colors */
+/* LED Color Palette */
 .col-orange { color: #ff6600 !important; }
 .col-green  { color: #00ff00 !important; }
 .col-red    { color: #ff3333 !important; }
