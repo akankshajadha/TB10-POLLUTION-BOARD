@@ -18,7 +18,7 @@ html, body {
 /* 2. Outer Container - Scaled to 148x148 to keep the 1px orange border visible inside all 4 edges */
 .led-screen {
     width: 148px !important;
-    height: 148px !important; /* Prevents bottom border from getting pushed off-screen */
+    height: 146px !important; /* Prevents bottom border from getting pushed off-screen */
     background-color: #000000 !important;
     box-sizing: border-box !important;
     
@@ -37,7 +37,7 @@ html, body {
 /* Ensures table collapse merges adjacent bottom borders */
 .board-table {
     width: 100% !important;
-    height: 100% !important;
+    height: 144% !important;
     border-collapse: collapse !important;
     table-layout: fixed !important;
     border-bottom: 1px solid #ffffff !important; /* Bottom line under entire table */
