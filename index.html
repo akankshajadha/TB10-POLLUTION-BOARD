@@ -2,39 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=150, height=150, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=150, height=150, initial-scale=1.0">
     <title>Construction Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="led-screen">
         <table class="board-table">
-            <!-- Header Title -->
             <tr class="title-row">
                 <td colspan="3" class="title-cell">CONSTRUCTION BOARD</td>
             </tr>
-            
-            <!-- Date & Time Single Line -->
             <tr class="datetime-row">
                 <td colspan="3" class="datetime-cell">
                     <div class="datetime-flex">
-                        <span class="date-txt">DATE: <span id="dateDisplay">30/09/2026</span></span>
-                        <span class="time-txt">TIME: <span id="timeDisplay">11:38:51 AM</span></span>
+                        <span class="date-txt">DATE:<span id="dateDisplay">30/09/2026</span></span>
+                        <span class="time-txt">TIME:<span id="timeDisplay">11:38:51 AM</span></span>
                     </div>
                 </td>
             </tr>
-
-            <!-- Column Titles -->
             <tr class="header-row">
                 <th class="col-param">PARAMETER</th>
                 <th class="col-count">COUNT</th>
                 <th class="col-unit">UNIT</th>
             </tr>
-
-            <!-- Live Telemetry Rows -->
             <tr>
                 <td class="param-name col-orange">TEMPERATURE</td>
-                <td class="param-val col-green" id="tempDisplay">29.2</td>
+                <td class="param-val col-green" id="tempDisplay">30.6</td>
                 <td class="param-unit col-red">°C</td>
             </tr>
             <tr>
