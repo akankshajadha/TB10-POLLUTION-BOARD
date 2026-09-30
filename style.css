@@ -21,7 +21,7 @@ html, body {
     height: 148px !important;
     margin: 0 auto !important;
     background-color: #000000 !important;
-    border: 1px solid #ff6600 !important; /* Single precise 1px outer orange border */
+    /* border: 1px solid #ff6600 !important; /* Single precise 1px outer orange border */ */
     box-sizing: border-box !important;
     overflow: hidden !important;
     position: relative !important;
