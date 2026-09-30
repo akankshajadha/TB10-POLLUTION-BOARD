@@ -8,7 +8,7 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     width: 150px !important;
-    height: 149px !important;
+    height: 150px !important;
     background-color: #000000 !important;
     overflow: hidden !important;
     font-family: 'VT323', monospace;
@@ -17,27 +17,39 @@ html, body {
 
 /* 2. Outer Container - Scaled to 148x148 to keep the 1px orange border visible inside all 4 edges */
 .led-screen {
-    width: 148px !important;
-    height: 145px !important;
-    margin: 0 auto !important;
+    width: 150px !important;
+    height: 149px !important; /* Prevents bottom border from getting pushed off-screen */
     background-color: #000000 !important;
-    /* border: 1px solid #ff6600 !important; /* Single precise 1px outer orange border */ */
     box-sizing: border-box !important;
+    
+    /* Adds explicit orange border to ALL 4 sides, including bottom */
+    border-top: 1px solid #ff6600 !important;
+    border-left: 1px solid #ff6600 !important;
+    border-right: 1px solid #ff6600 !important;
+    border-bottom: 1px solid #ff6600 !important; 
+    
     overflow: hidden !important;
-    position: relative !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
 }
 
-/* 3. Single Grid Border Enforcement */
+/* Ensures table collapse merges adjacent bottom borders */
 .board-table {
     width: 100% !important;
     height: 100% !important;
-    border-collapse: collapse !important; 
+    border-collapse: collapse !important;
     table-layout: fixed !important;
+    border-bottom: 1px solid #ffffff !important; /* Bottom line under entire table */
 }
 
+/* Force bottom border on every table cell */
 .board-table th,
 .board-table td {
-    border: 1px solid #ffffff !important; /* Single white grid line */
+    border-top: 1px solid #ffffff !important;
+    border-left: 1px solid #ffffff !important;
+    border-right: 1px solid #ffffff !important;
+    border-bottom: 1px solid #ffffff !important; /* Enforces cell bottom border */
     text-align: center;
     vertical-align: middle;
     padding: 0 !important;
@@ -72,7 +84,7 @@ html, body {
     font-size: 7.5px !important; /* Slightly smaller to prevent text collision */
     white-space: nowrap !important;
     letter-spacing: -0.5px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 /* Table Header Row */
@@ -82,8 +94,8 @@ html, body {
 .col-unit  { width: 28%; color: #00ffff; font-size: 7.5px !important; }
 
 /* Parameter Values */
-.param-name { font-size: 7.5px !important; font-weight: bold; }
-.param-val  { font-size: 10px !important; font-weight: bold; }
+.param-name { font-size: 7.0px !important; font-weight: bold; }
+.param-val  { font-size: 8px !important; font-weight: bold; }
 .param-unit { font-size: 7.5px !important; }
 
 /* Colors */
