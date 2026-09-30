@@ -31,7 +31,7 @@ html, body {
     /* background-color: #000000 !important; */
     /* border: 1px solid #ff6600 !important; */
     /* box-sizing: border-box !important; */
- border-bottom: #ffffff;
+    /* border-bottom: #ffffff; */
     /* overflow: hidden !important; */
 }
 
@@ -41,6 +41,10 @@ html, body {
     height: 100% !important;
     border-collapse: collapse !important;
     table-layout: fixed !important;
+    top: 0px ;
+    left: 0px ;
+    bottom:0px;
+    right:0px;
 }
 
 /* Default Cell Border (Applies 1px white border to grid cells) */
