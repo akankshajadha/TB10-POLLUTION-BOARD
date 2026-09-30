@@ -60,6 +60,6 @@
             setInterval(updateLiveClock, 1000);
 
             fetchLiveBackendData();
-            setInterval(fetchLiveBackendData, 300000);
+            setInterval(fetchLiveBackendData, 3000);
         };
    
