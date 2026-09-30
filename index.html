@@ -5,49 +5,44 @@
     <meta name="viewport" content="width=150, height=150, initial-scale=1.0">
     <title>Construction Board</title>
     <link rel="stylesheet" href="style.css">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <div class="led-screen">
         <table class="board-table">
-            <!-- Header Title Row (With Top White Border) -->
             <tr class="title-row">
                 <td colspan="3" class="title-cell">CONSTRUCTION BOARD</td>
             </tr>
-            
-            <!-- Date & Time Row (Full Width - No Vertical Split) -->
             <tr class="datetime-row">
                 <td colspan="3" class="datetime-cell">
-                    <span class="dt-txt">DATE:<span id="dateDisplay">30/09/2026</span></span>
-                    <span class="dt-txt dt-space">TIME:<span id="timeDisplay">02:26:27 PM</span></span>
+                    <span class="dt-txt">DATE:<span id="dateDisplay">----</span></span>
+                    <span class="dt-txt dt-space">TIME:<span id="timeDisplay">----</span></span>
                 </td>
             </tr>
-
-            <!-- Parameter Column Headers (Vertical Grid Lines START Here) -->
             <tr class="header-row">
                 <th class="col-param">PARAMETER</th>
                 <th class="col-count">COUNT</th>
                 <th class="col-unit">UNIT</th>
             </tr>
-
-            <!-- Telemetry Data Rows -->
-            <tr>
+            <tr class="data-row">
                 <td class="param-name col-orange">TEMPERATURE</td>
-                <td class="param-val col-green" id="tempDisplay">30.6</td>
+                <td class="param-val col-green" id="tempDisplay">--</td>
                 <td class="param-unit col-red">°C</td>
             </tr>
-            <tr>
+            <tr class="data-row">
                 <td class="param-name col-orange">HUMIDITY</td>
-                <td class="param-val col-green" id="humDisplay">77</td>
+                <td class="param-val col-green" id="humDisplay">--</td>
                 <td class="param-unit col-red">%</td>
             </tr>
-            <tr>
+            <tr class="data-row">
                 <td class="param-name col-orange">PM2.5</td>
-                <td class="param-val col-green" id="pm25Display">20</td>
+                <td class="param-val col-green" id="pm25Display">--</td>
                 <td class="param-unit col-red">µg/m³</td>
             </tr>
-            <tr>
+            <tr class="data-row">
                 <td class="param-name col-orange">PM10</td>
-                <td class="param-val col-green" id="pm10Display">30</td>
+                <td class="param-val col-green" id="pm10Display">--</td>
                 <td class="param-unit col-red">µg/m³</td>
             </tr>
         </table>
