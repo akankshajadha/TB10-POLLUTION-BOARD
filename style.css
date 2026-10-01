@@ -59,7 +59,7 @@ html, body {
     vertical-align: middle;
     padding: 0 ;
     box-sizing: border-box ;
-    line-height: 1 ;
+    line-height: 1 t;
 }
 
 /* Restores Left and Top edge grid lines without double-pixel thickness */
@@ -79,7 +79,7 @@ html, body {
     height: 15px !important;
     letter-spacing: 0px;
     white-space: nowrap;
-
+}
 .datetime-cell {
     height: 13px ;
     background-color: #000000;
