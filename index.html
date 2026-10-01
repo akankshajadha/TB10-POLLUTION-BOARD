@@ -2,51 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=150, height=150, initial-scale=1.0">
-    <title>Construction Board</title>
+    <title>LED Construction Board</title>
     <link rel="stylesheet" href="style.css">
-     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-    
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="led-screen">
-        <table class="board-table">
-            <tr class="title-row">
-                <td colspan="3" class="title-cell">CONSTRUCTION BOARD</td>
-            </tr>
-            <tr class="datetime-row">
-                <td colspan="3" class="datetime-cell">
-                    <span class="dt-txt">DATE:<span id="dateDisplay">----</span></span>
-                    <span class="dt-txt dt-space">TIME:<span id="timeDisplay">----</span></span>
-                </td>
-            </tr>
-            <tr class="header-row">
-                <th class="col-param">PARAMETER</th>
-                <th class="col-count">COUNT</th>
-                <th class="col-unit">UNIT</th>
-            </tr>
-            <tr class="data-row">
-                <td class="param-name col-orange">TEMPERATURE</td>
-                <td class="param-val col-green" id="tempDisplay">--</td>
-                <td class="param-unit col-red">°C</td>
-            </tr>
-            <tr class="data-row">
-                <td class="param-name col-orange">HUMIDITY</td>
-                <td class="param-val col-green" id="humDisplay">--</td>
-                <td class="param-unit col-red">%</td>
-            </tr>
-            <tr class="data-row">
-                <td class="param-name col-orange">PM2.5</td>
-                <td class="param-val col-green" id="pm25Display">--</td>
-                <td class="param-unit col-red">µg/m³</td>
-            </tr>
-            <tr class="data-row">
-                <td class="param-name col-orange">PM10</td>
-                <td class="param-val col-green" id="pm10Display">--</td>
-                <td class="param-unit col-red">µg/m³</td>
-            </tr>
+    <div class="display-board">
+        <!-- Main Title -->
+        <div class="main-header">CONSTRUCTION BOARD</div>
+        
+        <!-- Date & Time Row -->
+        <div class="datetime-row">
+            <div class="date-box" id="live-date">DATE:01/10/2026</div>
+            <div class="time-box" id="live-time">TIME:11:13:08 AM</div>
+        </div>
+
+        <!-- Data Grid Table -->
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 42%;">PARAMETER</th>
+                    <th style="width: 28%;">COUNT</th>
+                    <th style="width: 30%;">UNIT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-param">TEMPERATURE</td>
+                    <td class="col-count" id="val-temp">31.1</td>
+                    <td class="col-unit">°C</td>
+                </tr>
+                <tr>
+                    <td class="col-param">HUMIDITY</td>
+                    <td class="col-count" id="val-humid">62</td>
+                    <td class="col-unit">%</td>
+                </tr>
+                <tr>
+                    <td class="col-param">PM2.5</td>
+                    <td class="col-count" id="val-pm25">44</td>
+                    <td class="col-unit">µg/m³</td>
+                </tr>
+                <tr>
+                    <td class="col-param">PM10</td>
+                    <td class="col-count" id="val-pm10">57</td>
+                    <td class="col-unit">µg/m³</td>
+                </tr>
+            </tbody>
         </table>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
