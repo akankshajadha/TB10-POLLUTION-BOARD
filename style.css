@@ -3,109 +3,112 @@
     src: url('./VT323-Regular.ttf') format('truetype');
 }
 
-/* Reset to strictly fit 150x150 hardware canvas */
+/* 1. Global Crisp Pixel Rendering Engine Setup */
 html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 150px !important;
-    height: 150px !important;
-    background-color: #000000 !important;
-    overflow: hidden !important;
+    margin: 0;
+    padding: 0 ;
+    width: 150px ;
+    height: 150px ;
+    background-color: #000000 ;
+    overflow: hidden ;
     font-family: 'VT323', monospace;
-    box-sizing: border-box !important;
-  
-}
-
-/* Outer Container - Restores Equal 1px Orange Frame on ALL 4 Sides */
-.led-screen {
-    width: 148px !important;
-    height: 148px !important;
-    position: absolute !important;
-    top: 0px !important;
-    left: 0px !important;
-    bottom:1px;
-    right:0px;
+    box-sizing: border-box ;
+    display: flex ;
+    justify-content: center ;
+    align-items: center ;
     
-    /* padding-top: 3px !important; */
-    /* padding-left: 3px; */
-    /* background-color: #000000 !important; */
-    /* border: 1px solid #ff6600 !important; */
-    /* box-sizing: border-box !important; */
-    /* border-bottom: #ffffff; */
-    /* overflow: hidden !important; */
+    /* Disable Font & Vector Anti-aliasing (Fixes Pixel Bleed/Shadows) */
+    -webkit-font-smoothing: none ;
+    -moz-osx-font-smoothing: unset ;
+    text-rendering: geometricPrecision ;
+    image-rendering: pixelated ;
+    image-rendering: crisp-edges ;
 }
 
-/* Table Setup */
+/* 2. Outer LED Container - Forced Solid Pixel Bounds */
+.led-screen {
+    width: 148px;
+    height: 148px ;
+    background-color: #000000 !important;
+    /* border: 1px solid #ff6600 !important; Single Crisp 1px Orange Frame */
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    
+    /* Prevent subpixel offsets */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 3. Table Structure - Separated Borders for Exact 1px Lines */
 .board-table {
-    width: 100% !important;
-    height: 100% !important;
-    border-collapse: collapse !important;
-    table-layout: fixed !important;
-    top: 0px ;
-    left: 0px ;
-    bottom:0px;
-    right:0px;
+    width: 100% ;
+    height: 100% ;
+    border-collapse: separate ; 
+    border-spacing: 0 ;
+    table-layout: fixed ;
 }
 
-/* Default Cell Border (Applies 1px white border to grid cells) */
+/* 4. Single-Pixel Grid Borders */
 .board-table th,
 .board-table td {
-    border: 1px solid #ffffff !important;
+    border-right: 1px solid #ffffff ;
+    border-bottom: 1px solid #ffffff;
+    border-top: 0px ;
+    border-left: 0px;
     text-align: center;
     vertical-align: middle;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+    padding: 0 ;
+    box-sizing: border-box ;
+    line-height: 1 ;
 }
 
-/* Top Title Row - Explicit Upper Border Added */
+/* Restores Left and Top edge grid lines without double-pixel thickness */
+.board-table tr:first-child td {
+    border-top: 1px solid #ffffff !important;
+}
+.board-table td:first-child,
+.board-table th:first-child {
+    border-left: 1px solid #ffffff !important;
+}
+
+/* Row Heights & Typography */
 .title-cell {
     color: #00ffff;
-    font-size: 9px !important;
+    font-size: 8px !important;
     font-weight: bold;
-    height: 16px !important;
-    letter-spacing: 0.2px;
-    white-space: nowrap !important;
-    border-top: 1px solid #ffffff !important;    /* Upper White Line */
-    border-left: 1px solid #ffffff !important;   /* Left White Line */
-    border-right: 1px solid #ffffff !important;  /* Right White Line */
-    border-bottom: 1px solid #ffffff !important; /* Divider to Date Row */
-}
-
-/* Date & Time Row - Full Width Box Without Middle Vertical Line */
-.datetime-cell {
     height: 15px !important;
+    letter-spacing: 0px;
+    white-space: nowrap;
+
+.datetime-cell {
+    height: 13px ;
     background-color: #000000;
-    text-align: center !important;
-    white-space: nowrap !important;
-    padding: 0 2px !important;
-    border-left: 1px solid #ffffff !important;
-    border-right: 1px solid #ffffff !important;
-    border-bottom: 1px solid #ffffff !important;
+    text-align: center ;
+    white-space: nowrap ;
+    padding: 0 2px ;
 }
 
 .dt-txt {
     color: #ffffff;
-    font-size: 7.5px !important;
-    font-weight: bold;
-    letter-spacing: -0.3px;
+    font-size: 7px ;
+        font-weight: bold;
 }
 
 .dt-space {
-    margin-right: 6px !important;
+    margin-left: 4px;
 }
 
-/* Parameter Column Headers - Vertical Grid Lines START Here */
-.header-row { height: 13px !important; }
-.col-param { width: 44%; color: #00ffff; font-size: 7.5px !important; }
-.col-count { width: 28%; color: #00ffff; font-size: 7.5px !important; }
-.col-unit  { width: 28%; color: #00ffff; font-size: 7.5px !important; }
+.header-row { height: 12px ; }
+.col-param { width: 44%; color: #00ffff; font-size: 7px ; }
+.col-count { width: 28%; color: #00ffff; font-size: 7px ; }
+.col-unit  { width: 28%; color: #00ffff; font-size: 7px ; }
 
-/* Parameter Values */
-.param-name { font-size: 7.1px !important; font-weight: bold; }
-.param-val  { font-size: 8px !important; font-weight: bold; }
-.param-unit { font-size: 7.5px !important; }
+.data-row { height: 26px  }
+.param-name { font-size: 7px ; font-weight: bold; }
+.param-val  { font-size: 9p; font-weight: bold; }
+.param-unit { font-size: 7px ; }
 
 /* Colors */
-.col-orange { color: #ff6600 !important; }
-.col-green  { color: #00ff00 !important; }
-.col-red    { color: #ff3333 !important; }
+.col-orange { color: #ff6600 ; }
+.col-green  { color: #00ff00 ; }
+.col-red    { color: #ff3333 ; }
