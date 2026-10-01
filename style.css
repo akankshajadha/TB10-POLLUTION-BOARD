@@ -19,7 +19,7 @@ body, html {
     width: 100vw;              /* CHANGED: Stretches across the full screen width */
     height: 100vh;             /* CHANGED: Stretches across the full screen height */
     background-color: #000000;
-    border: 1px solid #ffffff; 
+    /* border: 1px solid #ffffff;  */
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -74,6 +74,7 @@ body, html {
 /* Main Matrix Data Table Block */
 .data-table {
     width: 100%;
+    height: 73%; 
     border-collapse: collapse;
     flex-grow: 1;              /* Automatically fills all remaining vertical screen space */
     table-layout: fixed; 
@@ -81,6 +82,7 @@ body, html {
 
 /* CHANGED: Table Row Distribution Hook */
 .data-table tr {
+       height: 20%;    
     height: calc(100% / 10);     /* CHANGED: Forces rows to divide the remaining vertical space evenly */
 }
 
@@ -89,7 +91,7 @@ body, html {
     border: 1px solid #ffffff; 
     text-align: center;
     vertical-align:center;
-    padding: 4px;
+    padding: 0px;
     overflow: hidden;
     white-space: nowrap;
 }
