@@ -136,3 +136,17 @@ body, html {
     font-size: 5.5vw;          
     text-transform: none !important; /* CRITICAL: Prevents the browser from forcing lowercase 'µ' into an uppercase 'M' */
 }
+@media (min-width: 769px) {
+    .display-board {
+        width: 480px;
+        height: 480px;
+        margin: 40px auto;
+    }
+    .main-header { font-size: 26px; height: 60px; }
+    .datetime-row { font-size: 16px; height: 40px; }
+    .data-table { height: 380px; }
+    .data-table th { font-size: 18px; }
+    .col-param { font-size: 16px; }
+    .col-count { font-size: 32px; }
+    .col-unit { font-size: 18px; }
+}
