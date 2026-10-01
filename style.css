@@ -74,7 +74,7 @@ body, html {
     width: 50%;                
     padding-left: 4px;         /* Minimizes space from the left frame line */
     text-align: left;          /* Forces text to hug the left side border */
-    border-right: 1px solid #ffffff; 
+    /* border-right: 1px solid #ffffff;  */
     white-space: nowrap;
 }
 .time-box {
