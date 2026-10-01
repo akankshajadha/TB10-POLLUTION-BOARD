@@ -14,21 +14,16 @@ body, html {
   background-color: #000; 
 }
 
-/* ─── FULL VIEWPORT WITH SHARP OUTER BORDER ─── */
+/* ─── BASE STYLES FOR THE WEB PAGE VIEW ─── */
 .display-board {
-    width: 100vw;              
-    height: 100vh;             
+    width: 600px;           /* Normal size on your desktop browser */
+    height: 600px;
+    margin: 20px auto;      /* Centers the preview board on your screen */
     background-color: #000000;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-
-    /* Single 1px border on Top, Left, and Right of the screen */
-    border-top: 1px solid #ffffff;
-    border-left: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
-    /* Bottom border is handled by the table to prevent a 2px thick line */
-    border-bottom: none; 
+    border: 1px solid #ffffff; 
     box-sizing: border-box; 
 }
 
@@ -40,7 +35,7 @@ body, html {
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: none;
     font-smoothing: none;
-    text-rendering: optimizeSpeed; /* Forces crisp pixel alignment */
+    text-rendering: optimizeSpeed; 
 }
 
 /* Main Top Header Banner */
@@ -48,12 +43,12 @@ body, html {
     width: 100%;
     text-align: center;
     color: #00ffff; 
-    font-size: 7.5vw;          
+    font-size: 28px;        /* Clean desktop scale */
     height: 15%;               
     display: flex;
     align-items: center;       
     justify-content: center;   
-    border-bottom: 1px solid #ffffff; /* 1px line below main header */
+    border-bottom: 1px solid #ffffff; 
 }
 
 /* Date and Time Sub-container grid setup */
@@ -61,9 +56,9 @@ body, html {
     width: 100%;
     display: flex;
     height: 12%;               
-    font-size: 5vw;            
+    font-size: 18px;        /* Clean desktop scale */
     color: #ffffff;
-    border-bottom: 1px solid #ffffff; /* 1px line below date/time */
+    border-bottom: 1px solid #ffffff; 
     align-items: center;       
 }
 
@@ -71,7 +66,7 @@ body, html {
     width: 50%;                
     padding-left: 12px;
     text-align: left;
-    border-right: 1px solid #ffffff; /* 1px vertical line between date and time */
+    border-right: 1px solid #ffffff; 
     white-space: nowrap;
 }
 
@@ -82,26 +77,24 @@ body, html {
     white-space: nowrap;
 }
 
-/* ─── PERFECT 1PX INNER & BOTTOM TABLE GRID ─── */
+/* Table Design */
 .data-table {
     width: 100%;
     height: 73%;               
-    border-collapse: collapse; /* CRITICAL: Flattens overlapping lines into a single pixel */
+    border-collapse: collapse; 
     table-layout: fixed; 
 }
 
-/* Row Distribution Handler */
 .data-table tr {
-    height: calc(100% / 5);    /* Divides table height perfectly among your 5 rows */
+    height: calc(100% / 5);    
 }
 
-/* Applies a sharp 1px border to the bottom, left, and right of every cell */
 .data-table th, 
 .data-table td {
     border-left: 1px solid #ffffff;
     border-right: 1px solid #ffffff;
     border-bottom: 1px solid #ffffff;
-    border-top: none; /* Prevents double lines between rows */
+    border-top: none; 
     text-align: center;
     vertical-align: middle;
     padding: 0px;
@@ -109,30 +102,44 @@ body, html {
     white-space: nowrap;
 }
 
-/* Table Category Matrix Header Labels */
 .data-table th {
     color: #00ffff; 
-    font-size: 5.5vw;          
+    font-size: 20px;        /* Clean desktop scale */
 }
 
-/* Environmental Parameter Titles Column (Left) */
 .col-param {
     color: #ff4500; 
-    font-size: 5vw;            
+    font-size: 18px;        /* Clean desktop scale */
     letter-spacing: -0.5px; 
     text-align: left !important; 
     padding-left: 12px !important;
 }
 
-/* Numeric Realtime Counter Values Column (Center) */
 .col-count {
     color: #00ff00; 
-    font-size: 10vw;           
+    font-size: 36px;        /* Clean desktop scale */
 }
 
-/* Metric Units Label Tags Column (Right) */
 .col-unit {
     color: #ff4500; 
-    font-size: 5.5vw;          
-    text-transform: none !important; /* Keeps the micro symbol 'µ' lowercase */
+    font-size: 20px;        /* Clean desktop scale */
+    text-transform: none !important; 
+}
+
+
+/* ─── AUTOMATED LED SCREEN OVERRIDE MODE ─── */
+/* When the browser window changes or maps directly to the full LED canvas resolution */
+@media (max-width: 768px), (display-mode: fullscreen) {
+    .display-board {
+        width: 100vw;              
+        height: 100vh;             
+        margin: 0;
+        border-bottom: none;
+    }
+    .main-header { font-size: 7.5vw; }
+    .datetime-row { font-size: 5vw; }
+    .data-table th { font-size: 5.5vw; }
+    .col-param { font-size: 5vw; }
+    .col-count { font-size: 10vw; }
+    .col-unit { font-size: 5.5vw; }
 }
