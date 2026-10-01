@@ -19,7 +19,7 @@ body, html {
     width: 100vw;              /* CHANGED: Stretches across the full screen width */
     height: 100vh;             /* CHANGED: Stretches across the full screen height */
     background-color: #000000;
-    /* border: 1px solid #ffffff;  */
+     border: 1px solid #ffffff;  
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -37,9 +37,10 @@ body, html {
     width: 100%;
     text-align: center;
     color: #00ffff; /* Cyan */
-    font-size: 6vw;            /* CHANGED: Dynamically scales font with width */
-    height: 12%;               /* CHANGED: Takes exactly 12% of the screen height */
+    font-size: 8vw;            /* CHANGED: Dynamically scales font with width */
+    height: 16%;               /* CHANGED: Takes exactly 12% of the screen height */
     display: flex;
+     line-height: 18px;
     align-items: center;       /* Vertical centering */
     justify-content: center;   /* Horizontal centering */
     border-bottom: 1px solid #ffffff;
