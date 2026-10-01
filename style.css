@@ -81,7 +81,7 @@ body, html {
 
 /* CHANGED: Table Row Distribution Hook */
 .data-table tr {
-    height: calc(100% / 6);     /* CHANGED: Forces rows to divide the remaining vertical space evenly */
+    height: calc(100% / 10);     /* CHANGED: Forces rows to divide the remaining vertical space evenly */
 }
 
 .data-table th, 
