@@ -1,98 +1,113 @@
-@font-face {
-    font-family: 'VT323';
-    src: url('./VT323-Regular.ttf') format('truetype');
-}
-
-/* 1. Global Crisp Pixel Canvas Setup */
-html, body {
+/* Zero out browser canvas parameters */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    width: 150px;
-    height: 150px;
+}
+
+body {
     background-color: #000000;
     overflow: hidden;
-    font-family: 'VT323', monospace;
-    box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: unset;
-    text-rendering: geometricPrecision;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-/* 2. Outer LED Box - Enforces Outer Perimeter Border */
-.led-screen {
-    width: 148px;
-    height: 148px;
-    background-color: #000000 !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-    position: relative;
-    
-    /* Fixed crisp border encompassing all four outer edges */
-    border: 1px solid #ffffff !important; 
-    
-    /* REMOVED LEFT SHIFT: Table moves completely left to eliminate empty space */
-    padding-left: 0px !important; 
+/* ─── FIXED 160x160 LED VIEWPORT CANVASES ─── */
+.display-board {
+    width: 160px;
+    height: 160px;
+    background-color: #000000;
+    border: 1px solid #ffffff; /* 1px white boundary outline */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-/* 3. Table Structure with strict boundary calculations */
-.board-table {
-    width: 100%;
-    height: 100%;
-    border-collapse: collapse; /* Merges boundaries to show continuous grid lines */
-    table-layout: fixed;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* 4. Exact Grid Borders for Parameter, Count, and Unit Cells */
-.board-table th,
-.board-table td {
-    /* Guarantees that every single column partition cell has visible borders */
-    border: 1px solid #ffffff !important; 
-    text-align: center;
-    vertical-align: middle;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-sizing: border-box;
-    line-height: 1;
-}
-
-/* 5. Micro-Allocated Row Heights (Fits exactly 148px internal layout height) */
-.title-row { height: 16px; }
-.datetime-row { height: 14px; }
-.header-row { height: 12px; }
-.data-row { height: 26.5px; } 
-
-/* Typography sizing for 150px matrix */
-.title-cell {
-    color: #00ffff;
-    font-size: 8px;
+/* Bold typography ensures clear pixel mapping for distant reading */
+.main-header, .datetime-row, .data-table {
+    font-family: Arial, Helvetica, sans-serif; /* Clean sans-serif maps crisper to low-res matrix grids */
     font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Main Top Header Banner */
+.main-header {
+    width: 100%;
+    text-align: center;
+    color: #00ffff; /* Cyan */
+    font-size: 11px;
+    height: 16px;
+    line-height: 15px;
+    border-bottom: 1px solid #ffffff;
+}
+
+/* Date and Time Sub-container grid setup */
+.datetime-row {
+    width: 100%;
+    display: flex;
+    height: 13px;
+    line-height: 12px;
+    font-size: 7.2px;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.date-box {
+    width: 48%;
+    padding-left: 2px;
+    text-align: left;
+    border-right: 1px solid #ffffff; /* Inner vertical split lines */
     white-space: nowrap;
 }
 
-.dt-txt {
-    color: #ffffff;
-    font-size: 8px;
-    font-weight: bold;
+.time-box {
+    width: 52%;
+    padding-right: 2px;
+    text-align: right;
+    white-space: nowrap;
 }
 
-.col-param { width: 44%; color: #00ffff; font-size: 7px; font-weight: bold; }
-.col-count { width: 28%; color: #00ffff; font-size: 7px; font-weight: bold; }
-.col-unit  { width: 28%; color: #00ffff; font-size: 7px; font-weight: bold; }
+/* Main Matrix Data Table Block */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    flex-grow: 1;
+    table-layout: fixed; /* Enforces strict layout dimension sizes */
+}
 
-.param-name { font-size: 7px; font-weight: bold; }
-.param-val  { font-size: 10px; font-weight: bold; }
-.param-unit { font-size: 7px; }
+.data-table th, 
+.data-table td {
+    border: 1px solid #ffffff; /* Clean white grid lines */
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+}
 
-/* LED Color Palette */
-.col-orange { color: #ff6600; }
-.col-green  { color: #00ff00; }
-.col-red    { color: #ff3333; }
+/* Table Category Matrix Header Labels */
+.data-table th {
+    color: #00ffff; /* Cyan */
+    font-size: 8px;
+    height: 13px;
+}
+
+/* Environmental Parameter Titles Column (Left) */
+.col-param {
+    color: #ff4500; /* Vibrant Orange-Red */
+    font-size: 7.2px;
+    letter-spacing: -0.3px; /* Extra compact letter spacing to fit "TEMPERATURE" cleanly */
+}
+
+/* Numeric Realtime Counter Values Column (Center) */
+.col-count {
+    color: #00ff00; /* Bright Green */
+    font-size: 12px; /* Blown up significantly larger for quick scannability */
+}
+
+/* Metric Units Label Tags Column (Right) */
+.col-unit {
+    color: #ff4500; /* Vibrant Orange-Red */
+    font-size: 7.5px;
+}
