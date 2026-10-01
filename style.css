@@ -58,7 +58,7 @@ body, html {
     height: 12%;               
     font-size: 18px;        /* Clean desktop scale */
     color: #ffffff;
-    border-bottom: 1px solid #ffffff; 
+    /* border-bottom: 1px solid #ffffff;  */
     align-items: center;       
 }
 
