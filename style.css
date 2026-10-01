@@ -55,7 +55,7 @@ body, html {
     width: 100%;
     display: flex;
     height: 10%;               /* CHANGED: Takes exactly 10% of the screen height */
-    font-size: 5.5vw;            /* CHANGED: Scales font dynamically */
+    font-size: 5.2vw;            /* CHANGED: Scales font dynamically */
     color: #ffffff;
     border-bottom: 1px solid #ffffff;
     align-items: center;       /* Vertical centering */
@@ -104,7 +104,7 @@ body, html {
 /* Table Category Matrix Header Labels */
 .data-table th {
     color: #00ffff; /* Cyan */
-    font-size: 4.5vw;          /* CHANGED: Scaled up font */
+    font-size: 5vw;          /* CHANGED: Scaled up font */
 }
 
 /* Environmental Parameter Titles Column (Left) */
