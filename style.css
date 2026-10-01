@@ -37,7 +37,7 @@ body, html {
     width: 100%;
     text-align: center;
     color: #00ffff; /* Cyan */
-    font-size: 8vw;            /* CHANGED: Dynamically scales font with width */
+    font-size: 9px;            /* CHANGED: Dynamically scales font with width */
     height: 16%;               /* CHANGED: Takes exactly 12% of the screen height */
     display: flex;
      line-height: 18px;
