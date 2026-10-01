@@ -26,18 +26,17 @@ html, body {
 }
 
 /* 2. Outer LED Container - Forced Solid Pixel Bounds */
+/* Locate your section #2 and change these values: */
 .led-screen {
-    width: 148px;
-    height: 148px ;
+    width: 150px;       /* Changed from 148px */
+    height: 150px;      /* Changed from 148px */
     background-color: #000000 !important;
-    /* border: 1px solid #ff6600 !important; Single Crisp 1px Orange Frame */
     box-sizing: border-box !important;
     overflow: hidden !important;
-    
-    /* Prevent subpixel offsets */
     transform: translateZ(0);
     backface-visibility: hidden;
 }
+
 
 /* 3. Table Structure - Separated Borders for Exact 1px Lines */
 .board-table {
@@ -63,14 +62,42 @@ html, body {
 }
 
 /* Restores Left and Top edge grid lines without double-pixel thickness */
-.board-table tr:first-child td {
+/* Locate your section #3 and add this line inside the block: */
+.board-table {
+    width: 100%;
+    height: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    table-layout: fixed;
+    box-sizing: border-box; /* ADD THIS LINE */
+}
+
+/* Update your section #4 block to look exactly like this: */
+.board-table th,
+.board-table td {
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    border-top: 0px;
+    border-left: 0px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1; /* FIXED TYPO HERE (Removed 't') */
+}
+
+/* Update the outer edge rules directly below section #4 to include th elements: */
+.board-table tr:first-child td,
+.board-table tr:first-child th {   /* ADDED th HERE */
     border-top: 1px solid #ffffff !important;
 }
 .board-table td:first-child,
-.board-table th:first-child {
+.board-table th:first-child {      /* Already correct, ensures left border shows */
     border-left: 1px solid #ffffff !important;
 }
-
+.data-row { 
+    height: 25px;
+}
 /* Row Heights & Typography */
 .title-cell {
     color: #00ffff;
@@ -105,7 +132,7 @@ html, body {
 
 .data-row { height: 26px  }
 .param-name { font-size: 7px ; font-weight: bold; }
-.param-val  { font-size: 9p; font-weight: bold; }
+.param-val  { font-size: 7p; font-weight: bold; }
 .param-unit { font-size: 7px ; }
 
 /* Colors */
