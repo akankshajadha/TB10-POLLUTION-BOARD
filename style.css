@@ -115,6 +115,7 @@ body, html {
 
 /* Metric Units Label Tags Column (Right) */
 .col-unit {
-    color: #ff4500; /* Vibrant Orange-Red */
-    font-size: 4.5vw;          /* CHANGED: Scaled up font */
+    color: #ff4500; 
+    font-size: 5.5vw;          
+    text-transform: none !important; /* CRITICAL: Prevents the browser from forcing lowercase 'µ' into an uppercase 'M' */
 }
