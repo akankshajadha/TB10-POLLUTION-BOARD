@@ -11,122 +11,124 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #000; /* Keeps background dark for the LED grid */
+  background-color: #000; 
 }
 
-/* ─── CHANGED: FULL SCREEN VIEWPORT CANVASES ─── */
+/* ─── BASE STYLES FOR THE DESKTOP WEB PAGE PREVIEW ─── */
 .display-board {
-    width: 100vw;              /* CHANGED: Stretches across the full screen width */
-    height: 100vh;             /* CHANGED: Stretches across the full screen height */
+    width: 600px;           /* Sets a clean proportions ratio for web browser preview */
+    height: 600px;
+    margin: 40px auto;      /* Centers the preview board dashboard on your browser screen */
     background-color: #000000;
-    border: 1px solid #ffffff;  
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-left: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
-    border-top: 1px solid #ffffff;
+    border: 1px solid #ffffff; 
+    box-sizing: border-box; 
 }
 
-/* Bold typography ensures clear pixel mapping for distant reading */
+/* Crisp rendering parameters to remove character shadows/blur */
 .main-header, .datetime-row, .data-table {
     font-family: Arial, Helvetica, sans-serif; 
     font-weight: bold;
     text-transform: uppercase;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+    font-smoothing: none;
+    text-rendering: optimizeSpeed; 
 }
 
-/* Main Top Header Banner */
+/* Main Top Header Banner - Fixed size for Web Preview */
 .main-header {
     width: 100%;
     text-align: center;
-    color: #00ffff; /* Cyan */
-    font-size: 7.7vw;            /* CHANGED: Dynamically scales font with width */
-    height: 16%;               /* CHANGED: Takes exactly 12% of the screen height */
+    color: #00ffff; 
+    font-size: 26px;        
+    height: 70px;               
     display: flex;
-     line-height: 18px;
-    align-items: center;       /* Vertical centering */
-    justify-content: center;   /* Horizontal centering */
-    border-bottom: 1px solid #ffffff;
+    align-items: center;       
+    justify-content: center;   
+    border-bottom: 1px solid #ffffff; 
 }
 
-/* Date and Time Sub-container grid setup */
+/* Date and Time Grid Setup - Fixed size for Web Preview */
 .datetime-row {
     width: 100%;
     display: flex;
-    height: 10%;               /* CHANGED: Takes exactly 10% of the screen height */
-    font-size: 4px;            /* CHANGED: Scales font dynamically */
+    height: 40px;               
+    font-size: 16px;        
     color: #ffffff;
-    border-bottom: 1px solid #ffffff;
-    align-items: center;       /* Vertical centering */
+    border-bottom: 1px solid #ffffff;  
+    align-items: center;       
 }
 
 .date-box {
-    width: 50%;                /* CHANGED: Balanced out cleanly */
-    padding-left: 8px;
-    text-align: left;
-    /* border-right: 1px solid #ffffff;  */
+    width: 50%;                
+    padding-left: 8px;         
+    text-align: left;          
+    border-right: 1px solid #ffffff; 
     white-space: nowrap;
 }
 
 .time-box {
-    width: 50%;                /* CHANGED: Balanced out cleanly */
-    padding-right: 8px;
-    text-align: right;
+    width: 50%;                
+    padding-right: 8px;        
+    text-align: right;         
     white-space: nowrap;
 }
 
-/* Main Matrix Data Table Block */
+/* Table Design - Fixed size for Web Preview */
 .data-table {
     width: 100%;
-    height: 73%; 
-    border-collapse: collapse;
-    flex-grow: 1;              /* Automatically fills all remaining vertical screen space */
+    height: 488px;               
+    border-collapse: collapse; 
     table-layout: fixed; 
 }
 
-/* CHANGED: Table Row Distribution Hook */
 .data-table tr {
-       height: 20%;    
-    height: calc(100% / 10);     /* CHANGED: Forces rows to divide the remaining vertical space evenly */
+    height: calc(100% / 5);    
 }
 
 .data-table th, 
 .data-table td {
-    border: 1px solid #ffffff; 
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    border-top: none; 
     text-align: center;
-    vertical-align:center;
-    padding: 0px;
+    vertical-align: middle;
+    padding: 2px;
     overflow: hidden;
     white-space: nowrap;
-    bottom border:1px solid#ffffff;
 }
 
-/* Table Category Matrix Header Labels */
 .data-table th {
-    color: #00ffff; /* Cyan */
-    font-size: 5vw;          /* CHANGED: Scaled up font */
+    color: #00ffff; 
+    font-size: 18px;        
 }
 
-/* Environmental Parameter Titles Column (Left) */
 .col-param {
-    color: #ff4500; /* Vibrant Orange-Red */
-    font-size: 5vw;            /* CHANGED: Scaled up font */
+    color: #ff4500; 
+    font-size: 16px;        
     letter-spacing: -0.5px; 
+    text-align: left !important; 
+    padding-left: 8px !important;
 }
 
-/* Numeric Realtime Counter Values Column (Center) */
 .col-count {
-    color: #00ff00; /* Bright Green */
-    font-size: 7vw;            /* CHANGED: Blown up much larger for high readability */
+    color: #00ff00; 
+    font-size: 36px;        
 }
 
-/* Metric Units Label Tags Column (Right) */
 .col-unit {
     color: #ff4500; 
-    font-size: 5.5vw;          
-    text-transform: none !important; /* CRITICAL: Prevents the browser from forcing lowercase 'µ' into an uppercase 'M' */
+    font-size: 18px;        
+    text-transform: none !important; 
 }
+
+
+/* ─── AUTOMATED LED SCREEN ACCELERATION MODE ─── */
+/* Activates only when rendered full screen or deployed onto the low-res hardware matrix client */
 @media (max-width: 768px), (display-mode: fullscreen) {
     .display-board {
         width: 100vw;              
