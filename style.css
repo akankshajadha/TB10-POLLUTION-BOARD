@@ -14,20 +14,19 @@ body, html {
   background-color: #000000; 
 }
 
-/* ─── BASE STYLES FOR THE DESKTOP URL/WEB PAGE PREVIEW ─── */
+/* ─── BASE STYLES FOR THE DESKTOP URL / WEB PAGE PREVIEW ─── */
 .display-board {
-    width: 600px;           
+    width: 600px;           /* Proportional preview size for desktop browsers */
     height: 600px;
-    margin: 40px auto;      
+    margin: 40px auto;      /* Centers the preview board dashboard on your screen */
     background-color: #000000;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border: 1px solid #ffffff; 
-    border-bottom: 1px solid #ffffff; 
 }
 
-/* Perfect crisp mapping without text shadows or blurry anti-aliasing */
+/* Crisp rendering parameters to remove text shadows and blurry hardware anti-aliasing */
 .main-header, .datetime-row, .data-table {
     font-family: Arial, Helvetica, sans-serif; 
     font-weight: bold;
@@ -38,6 +37,7 @@ body, html {
     text-rendering: optimizeSpeed; 
 }
 
+/* Main Top Header Banner */
 .main-header {
     width: 100%;
     text-align: center;
@@ -50,11 +50,12 @@ body, html {
     border-bottom: 1px solid #ffffff; 
 }
 
+/* Date and Time Grid Setup */
 .datetime-row {
-    width: 50%;
+    width: 100%;
     display: flex;
-    height: 35px;               
-    font-size: 8px;        
+    height: 45px;               
+    font-size: 16px;        
     color: #ffffff;
     border-bottom: 1px solid #ffffff;  
     align-items: center;       
@@ -62,32 +63,32 @@ body, html {
 
 .date-box {
     width: 50%;                
-    padding-left: 10px;         
+    padding-left: 12px;         
     text-align: left;          
     border-right: 1px solid #ffffff; 
-    
     white-space: nowrap;
 }
 
 .time-box {
     width: 50%;                
-    padding-right: 10px;        
+    padding-right: 12px;        
     text-align: right;         
     white-space: nowrap;
 }
 
+/* Main Table Data Container Block */
 .data-table {
     width: 100%;
     height: 478px;               
     border-collapse: collapse; 
     table-layout: fixed; 
-    border-left: 1px solid #ffffff;
 }
 
 .data-table tr {
     height: 20%;    
 }
 
+/* Clean, uniform 1px border rule systematically applied across all cell fields */
 .data-table th, .data-table td {
     border: 1px solid #ffffff; 
     text-align: center;
@@ -103,62 +104,63 @@ body, html {
 .col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
 
 
-/* ─── FIXED HARDWARE LED SCREEN PARSING MODE (1:1 PIXEL GRAPHICS) ─── */
-/* This overrides everything when viewed directly inside the LED matrix layout window frame */
+/* ─── DUAL-LAYER ADVANCED MATRIX HARDWARE OVERRIDE LAYER ─── */
+/* Fires systematically when viewed via full-screen layouts or inside the physical LED display matrix viewports */
 @media (max-width: 768px), (display-mode: fullscreen) {
     html, body {
-        width: 100%;
-        height: 100%;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
     }
 
     .display-board {
         width: 100vw !important;              
         height: 100vh !important;             
         margin: 0 !important;
-        border: 1px solid #ffffff !important; /* Forces the perfect outer 1px frame */
+        border: 1px solid #ffffff !important; /* Locks structural outer 1px boundary frame on all 4 sides */
         display: flex !important;
         flex-direction: column !important;
     }
     
-    /* Fixed pixel heights instead of vh scales stops the elements from breaking boundaries */
+    /* Strict fractional viewport layouts prevent scaling overlaps */
     .main-header { 
-        height: 22px !important; 
-        font-size: 12px !important; 
+        height: 13.5vh !important; 
+        font-size: 6.2vw !important; 
         border-bottom: 1px solid #ffffff !important;
     }
     
     .datetime-row { 
-        height: 16px !important; 
-        font-size: 8px !important; /* Shrunk down so Date & Time fit perfectly side-by-side */
+        height: 9.5vh !important; 
+        font-size: 3.6vw !important; /* Scaled precisely to completely stop string clipping */
         border-bottom: 1px solid #ffffff !important;
     }
     
     .date-box { 
-        padding-left: 3px !important; 
+        padding-left: 6px !important; 
         border-right: 1px solid #ffffff !important; 
     }
     
     .time-box { 
-        padding-right: 3px !important; 
+        padding-right: 6px !important; 
     }
     
     .data-table { 
-        height: calc(100% - 38px) !important; /* Fills remaining height pixel space exactly */
+        height: 77vh !important; /* Seamlessly matches the remaining vertical canvas frame height */
         border-collapse: collapse !important;
     }
 
     .data-table tr {
-        height: 20% !important; /* Distributes rows flawlessly */
+        height: 20% !important; /* Distributes inner measurement blocks with mathematical uniformity */
     }
     
     .data-table th, .data-table td { 
-        border: 1px solid #ffffff !important; /* Uniform single pixel inner matrix lines */
+        border: 1px solid #ffffff !important; /* Sharp, high-contrast, non-shadow grid lines */
         padding: 0px !important;
     }
 
-    /* Sharp typography mapping for the individual matrix hardware blocks */
-    .data-table th { font-size: 9px !important; }
-    .col-param     { font-size: 8px !important; padding-left: 3px !important; letter-spacing: -0.3px !important; }
-    .col-count     { font-size: 13px !important; } 
-    .col-unit      { font-size: 9px !important; }
+    /* Fixed text aspect boundaries custom map 1:1 on small screen pixels */
+    .data-table th { font-size: 4.2vw !important; }
+    .col-param     { font-size: 3.6vw !important; padding-left: 6px !important; letter-spacing: -0.2px !important; }
+    .col-count     { font-size: 7.8vw !important; } 
+    .col-unit      { font-size: 4.2vw !important; }
 }
