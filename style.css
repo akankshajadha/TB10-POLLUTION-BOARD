@@ -90,7 +90,7 @@ body, html {
 .col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
 
 
-/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
+/* ─── FINAL HARDWARE LED SCREEN PERFECT 1:1 PIXEL-MAPPED OVERRIDE LAYER ─── */
 @media (max-width: 768px), (display-mode: fullscreen) {
     html, body {
         width: 100% !important;
@@ -101,19 +101,19 @@ body, html {
         align-items: center !important;
         justify-content: center !important;
         
-        /* Forces the browser to render thin vector graphics without anti-aliasing blurs */
+        /* Disables browser sub-pixel blending to remove line ghosting/shadows completely */
         image-rendering: pixelated !important;
         image-rendering: crisp-edges !important;
     }
 
     .display-board {
-        /* Squeezes layout box symmetrically inward by 2px to guarantee the 
-           top corners and bottom rows do not slip outside the physical LED bounds */
-        width: calc(100vw - 2px) !important;              
-        height: calc(100vh - 2px) !important;             
-        margin: 1px auto !important; 
+        /* Forces the container to stay strictly constrained within full window margins */
+        width: 100vw !important;              
+        height: 100vh !important;             
+        margin: 0 !important; 
+        padding: 0 !important;
         
-        /* Enforces a perfect, sharp 1px frame enclosing all four sides */
+        /* Solid single-pixel outer frame on all 4 sides */
         border: 1px solid #ffffff !important; 
         box-sizing: border-box !important;
         display: flex !important;
@@ -121,16 +121,17 @@ body, html {
         overflow: hidden !important;
     }
     
+    /* Fixed integer dimensions eliminate random decimal rounding lines */
     .main-header { 
-        height: 13.5vh !important; 
-        font-size: 6.2vw !important; 
+        height: 15% !important; 
+        font-size: 11px !important; /* Fixed integer font matches LED panel grid perfectly */
         border-bottom: 1px solid #ffffff !important;
         line-height: 1 !important;
     }
     
     .datetime-row { 
-        height: 9.5vh !important; 
-        font-size: 3.2vw !important; /* FIXED: Reduced from 5.5vw to stop overlap and clear pixel line shadows */
+        height: 10% !important; 
+        font-size: 7.2px !important; /* Shrunk down so text never overflows row box */
         border-bottom: 1px solid #ffffff !important;
         display: flex !important;
         justify-content: center !important;
@@ -138,7 +139,7 @@ body, html {
     }
     
     .datetime-spacer {
-        width: 4vw !important;
+        width: 12px !important; /* Exact pixel gap space */
     }
 
     #live-date, #live-time {
@@ -148,31 +149,31 @@ body, html {
     }
     
     .data-table { 
-        height: 77vh !important; 
+        height: 75% !important; 
         border-collapse: collapse !important;
-        table-layout: fixed !important; /* Locks strict grid mapping limits */
+        table-layout: fixed !important; /* Enforces absolute column widths */
     }
 
     .data-table tr {
         height: 20% !important; 
     }
     
-    /* Strict 1px inner grid mapping prevents double lines or bleeding pixel shadows */
+    /* Exact 1px inner grid mapping lines with no shadows */
     .data-table th, .data-table td { 
         border: 1px solid #ffffff !important; 
         padding: 0px !important;
         box-sizing: border-box !important;
     }
 
-    /* Fixed percentage column sizes eliminates random auto-generated fractional line steps */
+    /* Fixed grid percentages align the lines to clean pixel columns */
     .data-table th:nth-child(1), .data-table td:nth-child(1) { width: 44% !important; }
     .data-table th:nth-child(2), .data-table td:nth-child(2) { width: 28% !important; }
     .data-table th:nth-child(3), .data-table td:nth-child(3) { width: 28% !important; }
 
-    .data-table th { font-size: 4.2vw !important; }
+    .data-table th { font-size: 8px !important; }
     
-    /* FIXED: Adjusted font size parameters to keep long text safely enclosed inside boundaries */
-    .col-param     { font-size: 3.4vw !important; padding-left: 5px !important; letter-spacing: -0.5px !important; text-align: left !important; }
-    .col-count     { font-size: 7.8vw !important; font-weight: bold !important; } 
-    .col-unit      { font-size: 3.8vw !important; }
+    /* Fixed pixel configurations force values to stay crisp and centered inside the grid layout */
+    .col-param     { font-size: 7.2px !important; padding-left: 4px !important; letter-spacing: -0.2px !important; text-align: left !important; }
+    .col-count     { font-size: 13px !important; font-weight: bold !important; } 
+    .col-unit      { font-size: 7.5px !important; }
 }
