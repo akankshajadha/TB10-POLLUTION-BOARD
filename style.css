@@ -14,16 +14,15 @@ body, html {
   background-color: #000000; 
 }
 
-/* ─── BASE STYLES FOR THE DESKTOP URL / WEB PAGE PREVIEW ─── */
+/* ─── FULL SCREEN HARDWARE RUNTIME OVERRIDE ─── */
 .display-board {
-    width: 600px;           
-    height: 600px;
-    margin: 40px auto;      
+    width: 100vw;           
+    height: 100vh;
     background-color: #000000;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 1px solid #ffffff; 
+    border: 1px solid #ffffff; /* Single crisp outer border edge */
 }
 
 /* Perfect crisp typography mapping without text shadows or blurry anti-aliasing */
@@ -33,7 +32,6 @@ body, html {
     text-transform: uppercase;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: none;
-    /* font-smoothing: none; */
     text-rendering: optimizeSpeed; 
 }
 
@@ -41,8 +39,8 @@ body, html {
     width: 100%;
     text-align: center;
     color: #00ffff; 
-    font-size: 28px;        
-    height: 75px;               
+    height: 14vh;               
+    font-size: 6.5vw;        
     display: flex;
     align-items: center;       
     justify-content: center;   
@@ -52,109 +50,70 @@ body, html {
 .datetime-row {
     width: 100%;
     display: flex;
-    height: 45px;               
-    font-size: 15px;        
+    height: 10vh;               
+    font-size: 5.5vw;        
     color: #ffffff;
     border-bottom: 1px solid #ffffff;  
-    justify-content: center;
+    justify-content: space-around; /* Spreads Date and Time apart evenly like your board */
     align-items: center;       
 }
 
-.datetime-spacer {
-    width: 24px;
-}
-
+/* Hardened Native 3x5 Grid Layout for Pixel Alignment */
 .data-table {
     width: 100%;
-    height: 478px;               
-    border-collapse: collapse; 
-    table-layout: fixed; 
+    height: 76vh;               
+    display: grid;
+    /* Column proportions: Parameter (Left) is wider, Count (Center) and Unit (Right) split the rest */
+    grid-template-columns: 1.3fr 1fr 0.9fr;
+    /* 5 equal rows (1 header row + 4 sensor rows) */
+    grid-template-rows: repeat(5, 1fr);
 }
 
-.data-table tr {
-    height: 20%;    
-}
-
-.data-table th, .data-table td {
-    border: 1px solid #ffffff; 
-    text-align: center;
-    vertical-align: middle;
-    padding: 2px;
+.col-header, .col-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     white-space: nowrap;
+    /* Use borders on specified sides to prevent double line artifacts */
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
 }
 
-.data-table th { color: #00ffff; font-size: 20px; }
-.col-param { color: #ff4500; font-size: 18px; text-align: left !important; padding-left: 12px !important; }
-.col-count { color: #00ff00; font-size: 38px; }
-.col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
+/* Remove right borders from the last column items */
+.col-header:nth-child(3),
+.col-cell:nth-child(3n) {
+    border-right: none;
+}
 
+/* Remove bottom borders from the very last row items */
+.data-table .col-cell:nth-last-child(-n+3) {
+    border-bottom: none;
+}
 
-/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
+/* Column Designations & Color Maps */
+.col-header { 
+    color: #00ffff; 
+    font-size: 4.5vw; 
+}
 
-/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
-@media (max-width: 768px), (display-mode: fullscreen) {
-    html, body {
-        width: 100% !important;
-        height: 100% !important;
-        overflow: hidden !important;
-        background-color: #000000 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
+.col-param { 
+    color: #ff4500; /* Red-Orange LED Parameter labels */
+    font-size: 4.8vw; 
+    justify-content: flex-start; 
+    padding-left: 3vw; 
+}
 
-    .display-board {
-        width: calc(100vw - 2px) !important;              
-        height: calc(100vh - 2px) !important;             
-        margin: 0 auto !important; 
-        border: 1px solid #ffffff !important; /* Fixes missing outer edges cleanly */
-        box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
-    .main-header { 
-        height: 13.5vh !important; 
-        font-size: 6.2vw !important; 
-        border-bottom: 1px solid #ffffff !important;
-    }
-    
-    .datetime-row { 
-        height: 9.5vh !important; 
-        font-size: 5.5vw !important; /* Scaled precisely to lock into a clean single line block */
-        border-bottom: 1px solid #ffffff !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    
-    .datetime-spacer {
-        width: 4vw !important;
-    }
+.col-count { 
+    font-size: 7.8vw; 
+}
 
-    #live-date, #live-time {
-        padding: 0 !important;
-        margin: 0 !important;
-        white-space: nowrap !important;
-    }
-    
-    .data-table { 
-        height: 77vh !important; 
-        border-collapse: collapse !important;
-    }
+.val-green {
+    color: #00ff00; /* Distinct Green values */
+}
 
-    .data-table tr {
-        height: 20% !important; 
-    }
-    
-    .data-table th, .data-table td { 
-        border: 1px solid #ffffff !important; 
-        padding: 0px !important;
-    }
-
-    .data-table th { font-size: 4.2vw !important; }
-    .col-param     { font-size: 5.0vw !important; padding-left: 4px !important; letter-spacing: -0.2px !important; }
-    .col-count     { font-size: 7.8vw !important; } 
-    .col-unit      { font-size: 5.2vw !important; }
+.col-unit { 
+    color: #ff4500; /* Red-Orange LED Unit labels */
+    font-size: 5.0vw; 
+    text-transform: none; 
 }
