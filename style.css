@@ -11,10 +11,10 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #000; 
+  background-color: #000000; 
 }
 
-/* ─── BASE STYLES FOR THE DESKTOP WEB PAGE PREVIEW ─── */
+/* ─── BASE STYLES FOR THE DESKTOP URL/WEB PAGE PREVIEW ─── */
 .display-board {
     width: 600px;           
     height: 600px;
@@ -23,13 +23,10 @@ body, html {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    
-    /* Clean solid 1px border enclosing all edges */
     border: 1px solid #ffffff; 
-    box-sizing: border-box; 
 }
 
-/* Crisp rendering parameters to remove character shadows/blur */
+/* Perfect crisp mapping without text shadows or blurry anti-aliasing */
 .main-header, .datetime-row, .data-table {
     font-family: Arial, Helvetica, sans-serif; 
     font-weight: bold;
@@ -40,33 +37,31 @@ body, html {
     text-rendering: optimizeSpeed; 
 }
 
-/* Main Top Header Banner */
 .main-header {
     width: 100%;
     text-align: center;
     color: #00ffff; 
-    font-size: 26px;        
-    height: 14%;               
+    font-size: 28px;        
+    height: 75px;               
     display: flex;
     align-items: center;       
     justify-content: center;   
     border-bottom: 1px solid #ffffff; 
 }
 
-/* Date and Time Grid Setup */
 .datetime-row {
     width: 100%;
     display: flex;
-    height: 10%;               
+    height: 45px;               
     font-size: 16px;        
     color: #ffffff;
-    border-bottom: 1px solid #ffffff; 
+    border-bottom: 1px solid #ffffff;  
     align-items: center;       
 }
 
 .date-box {
     width: 50%;                
-    padding-left: 8px;         
+    padding-left: 12px;         
     text-align: left;          
     border-right: 1px solid #ffffff; 
     white-space: nowrap;
@@ -74,26 +69,23 @@ body, html {
 
 .time-box {
     width: 50%;                
-    padding-right: 8px;        
+    padding-right: 12px;        
     text-align: right;         
     white-space: nowrap;
 }
 
-/* Data Table Grid Lines Setup */
 .data-table {
     width: 100%;
-    height: 76%;               
+    height: 478px;               
     border-collapse: collapse; 
     table-layout: fixed; 
 }
 
 .data-table tr {
-    height: calc(100% / 5);    
+    height: 20%;    
 }
 
-/* Universal clean 1px border rule applied systematically to cell boundaries */
-.data-table th, 
-.data-table td {
+.data-table th, .data-table td {
     border: 1px solid #ffffff; 
     text-align: center;
     vertical-align: middle;
@@ -102,58 +94,68 @@ body, html {
     white-space: nowrap;
 }
 
-.data-table th {
-    color: #00ffff; 
-    font-size: 18px;        
-}
-
-.col-param {
-    color: #ff4500; 
-    font-size: 16px;        
-    letter-spacing: -0.5px; 
-    text-align: left !important; 
-    padding-left: 12px !important;
-}
-
-.col-count {
-    color: #00ff00; 
-    font-size: 36px;        
-}
-
-.col-unit {
-    color: #ff4500; 
-    font-size: 18px;        
-    text-transform: none !important; 
-}
+.data-table th { color: #00ffff; font-size: 20px; }
+.col-param { color: #ff4500; font-size: 18px; text-align: left !important; padding-left: 12px !important; }
+.col-count { color: #00ff00; font-size: 38px; }
+.col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
 
 
-/* ─── AUTOMATED LED SCREEN ACCELERATION MODE ─── */
-/* This block executes when viewed on your LED controller software layer */
+/* ─── FIXED HARDWARE LED SCREEN PARSING MODE (1:1 PIXEL GRAPHICS) ─── */
+/* This overrides everything when viewed directly inside the LED matrix layout window frame */
 @media (max-width: 768px), (display-mode: fullscreen) {
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+
     .display-board {
-        width: 100vw;              
-        height: 100vh;             
-        margin: 0;
-        border: 1px solid #ffffff !important; /* FORCES the solid outer border layout on the LED screen */
+        width: 100vw !important;              
+        height: 100vh !important;             
+        margin: 0 !important;
+        border: 1px solid #ffffff !important; /* Forces the perfect outer 1px frame */
+        display: flex !important;
+        flex-direction: column !important;
     }
     
+    /* Fixed pixel heights instead of vh scales stops the elements from breaking boundaries */
     .main-header { 
-        height: 14vh; 
-        font-size: calc(14vh * 0.45); /* Font size scales relative to row height instead of width */
+        height: 22px !important; 
+        font-size: 12px !important; 
+        border-bottom: 1px solid #ffffff !important;
     }
     
     .datetime-row { 
-        height: 10vh; 
-        font-size: calc(10vh * 0.4);  /* FIXED: Shrinks Date/Time text so it never breaks layout boundaries */
+        height: 16px !important; 
+        font-size: 8px !important; /* Shrunk down so Date & Time fit perfectly side-by-side */
+        border-bottom: 1px solid #ffffff !important;
+    }
+    
+    .date-box { 
+        padding-left: 3px !important; 
+        border-right: 1px solid #ffffff !important; 
+    }
+    
+    .time-box { 
+        padding-right: 3px !important; 
     }
     
     .data-table { 
-        height: 76vh; 
+        height: calc(100% - 38px) !important; /* Fills remaining height pixel space exactly */
+        border-collapse: collapse !important;
+    }
+
+    .data-table tr {
+        height: 20% !important; /* Distributes rows flawlessly */
     }
     
-    /* Dynamic scaling based cleanly on height allocation cells */
-    .data-table th { font-size: calc(15vh * 0.3); }
-    .col-param     { font-size: calc(15vh * 0.26); letter-spacing: -1px; } 
-    .col-count     { font-size: calc(15vh * 0.55); } 
-    .col-unit      { font-size: calc(15vh * 0.3); }
+    .data-table th, .data-table td { 
+        border: 1px solid #ffffff !important; /* Uniform single pixel inner matrix lines */
+        padding: 0px !important;
+    }
+
+    /* Sharp typography mapping for the individual matrix hardware blocks */
+    .data-table th { font-size: 9px !important; }
+    .col-param     { font-size: 8px !important; padding-left: 3px !important; letter-spacing: -0.3px !important; }
+    .col-count     { font-size: 13px !important; } 
+    .col-unit      { font-size: 9px !important; }
 }
