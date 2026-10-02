@@ -106,23 +106,27 @@ body, html {
 
 /* ─── DUAL-LAYER ADVANCED MATRIX HARDWARE OVERRIDE LAYER ─── */
 /* Fires systematically when viewed via full-screen layouts or inside the physical LED display matrix viewports */
+/* ─── AUTOMATED LED SCREEN ACCELERATION MODE ─── */
 @media (max-width: 768px), (display-mode: fullscreen) {
     html, body {
         width: 100% !important;
         height: 100% !important;
         overflow: hidden !important;
+        background-color: #000000;
     }
 
     .display-board {
-        width: 100vw !important;              
-        height: 100vh !important;             
-        margin: 0 !important;
-        border: 1px solid #ffffff !important; /* Locks structural outer 1px boundary frame on all 4 sides */
+        /* CHANGED: Shrinks the width and height by exactly 2 pixels 
+           to pull the right and bottom borders out of the hidden clipping zone */
+        width: calc(100vw - 2px) !important;              
+        height: calc(100vh - 2px) !important;             
+        margin: 1px !important; /* Perfect 1px safety margin offset around the entire grid */
+        
+        border: 1px solid #ffffff !important; /* Re-locks the clean single pixel frame on all 4 sides */
         display: flex !important;
         flex-direction: column !important;
     }
     
-    /* Strict fractional viewport layouts prevent scaling overlaps */
     .main-header { 
         height: 13.5vh !important; 
         font-size: 6.2vw !important; 
@@ -131,7 +135,7 @@ body, html {
     
     .datetime-row { 
         height: 9.5vh !important; 
-        font-size: 3.6vw !important; /* Scaled precisely to completely stop string clipping */
+        font-size: 3.6vw !important; 
         border-bottom: 1px solid #ffffff !important;
     }
     
@@ -145,20 +149,19 @@ body, html {
     }
     
     .data-table { 
-        height: 77vh !important; /* Seamlessly matches the remaining vertical canvas frame height */
+        height: 77vh !important; 
         border-collapse: collapse !important;
     }
 
     .data-table tr {
-        height: 20% !important; /* Distributes inner measurement blocks with mathematical uniformity */
+        height: 20% !important; 
     }
     
     .data-table th, .data-table td { 
-        border: 1px solid #ffffff !important; /* Sharp, high-contrast, non-shadow grid lines */
+        border: 1px solid #ffffff !important; 
         padding: 0px !important;
     }
 
-    /* Fixed text aspect boundaries custom map 1:1 on small screen pixels */
     .data-table th { font-size: 4.2vw !important; }
     .col-param     { font-size: 3.6vw !important; padding-left: 6px !important; letter-spacing: -0.2px !important; }
     .col-count     { font-size: 7.8vw !important; } 
