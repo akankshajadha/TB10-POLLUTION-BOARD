@@ -50,7 +50,6 @@ body, html {
     border-bottom: 1px solid #ffffff; 
 }
 
-/* Date and Time Grid Setup */
 .datetime-row {
     width: 100%;
     display: flex;
@@ -59,29 +58,25 @@ body, html {
     color: #ffffff;
     border-bottom: 1px solid #ffffff;  
     align-items: center;       
+    
+    /* ADDED: Distributes labels cleanly toward the outer boundaries */
+    justify-content: space-between; 
 }
 
 .date-box {
-    width: 50%;                
     padding-left: 12px;         
-    text-align: left;          
-    border-right: 1px solid #ffffff; 
     white-space: nowrap;
+    display: flex;
+    gap: 4px;
 }
 
 .time-box {
-    width: 50%;                
     padding-right: 12px;        
-    text-align: right;         
     white-space: nowrap;
+    display: flex;
+    gap: 4px;
 }
-
-/* Main Table Data Container Block */
-.data-table {
-    width: 100%;
-    height: 478px;               
-    border-collapse: collapse; 
-    table-layout: fixed; 
+ 
 }
 
 .data-table tr {
@@ -128,7 +123,7 @@ body, html {
         margin: 0 auto !important; 
         
         /* Re-locks the clean single pixel frame uniformly across all 4 boundaries */
-        border: 1px solid #ffffff !important; 
+        border: 0px solid #ffffff !important; 
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
@@ -139,25 +134,32 @@ body, html {
         font-size: 6.2vw !important; 
         border-bottom: 1px solid #ffffff !important;
     }
-    
     .datetime-row { 
         height: 9.5vh !important; 
-        font-size: 3.6vw !important; 
+        
+        
+        font-size: 3.1vw !important; 
         border-bottom: 1px solid #ffffff !important;
+        display: flex !important;
+        align-items: center !important;
+        
+        /* Forces the text to separate cleanly on the physical LED matrix */
+        justify-content: space-between !important; 
     }
     
     .date-box { 
         padding-left: 6px !important; 
-        border-right: 1px solid #ffffff !important; 
+        border-right: none !important; /* REMOVED: Takes away the middle vertical divider line seen in previous steps */
         display: flex !important;
-        justify-content: flex-start !important;
         gap: 2px !important;
     }
     
     .time-box { 
         padding-right: 6px !important; 
+        display: flex !important;
+        gap: 2px !important;
     }
-    
+}
     .data-table { 
         height: 77vh !important; 
         border-collapse: collapse !important;
