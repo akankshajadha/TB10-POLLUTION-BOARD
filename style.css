@@ -90,7 +90,7 @@ body, html {
 .col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
 
 
-/* ─── FINAL HARDWARE LED SCREEN PERFECT 1:1 PIXEL-MAPPED OVERRIDE LAYER ─── */
+/* ─── FINAL HARDWARE LED SCREEN PARSING MODE (1:1 PIXEL GRAPHICS) ─── */
 @media (max-width: 768px), (display-mode: fullscreen) {
     html, body {
         width: 100% !important;
@@ -101,19 +101,19 @@ body, html {
         align-items: center !important;
         justify-content: center !important;
         
-        /* Disables browser sub-pixel blending to remove line ghosting/shadows completely */
         image-rendering: pixelated !important;
         image-rendering: crisp-edges !important;
     }
 
     .display-board {
-        /* Forces the container to stay strictly constrained within full window margins */
+        /* CHANGED: Shrinks the outer container height down by 2 pixels 
+           to pull the bottom border safely out of the hidden clipping zone */
         width: 100vw !important;              
-        height: 100vh !important;             
-        margin: 0 !important; 
+        height: calc(100vh - 2px) !important;             
+        margin: 1px 0 !important; 
         padding: 0 !important;
         
-        /* Solid single-pixel outer frame on all 4 sides */
+        /* Forces the sharp 1px outer white frame on all 4 sides */
         border: 1px solid #ffffff !important; 
         box-sizing: border-box !important;
         display: flex !important;
@@ -121,17 +121,16 @@ body, html {
         overflow: hidden !important;
     }
     
-    /* Fixed integer dimensions eliminate random decimal rounding lines */
     .main-header { 
         height: 15% !important; 
-        font-size: 11px !important; /* Fixed integer font matches LED panel grid perfectly */
+        font-size: 11px !important; 
         border-bottom: 1px solid #ffffff !important;
         line-height: 1 !important;
     }
     
     .datetime-row { 
         height: 10% !important; 
-        font-size: 7.2px !important; /* Shrunk down so text never overflows row box */
+        font-size: 7.2px !important; 
         border-bottom: 1px solid #ffffff !important;
         display: flex !important;
         justify-content: center !important;
@@ -139,7 +138,7 @@ body, html {
     }
     
     .datetime-spacer {
-        width: 12px !important; /* Exact pixel gap space */
+        width: 12px !important; 
     }
 
     #live-date, #live-time {
@@ -149,30 +148,32 @@ body, html {
     }
     
     .data-table { 
+        /* CHANGED: Forces the table to stay strictly inside the 75% height boundary 
+           so it cannot overflow and squeeze out the outer bottom line */
         height: 75% !important; 
+        max-height: 75% !important;
         border-collapse: collapse !important;
-        table-layout: fixed !important; /* Enforces absolute column widths */
+        table-layout: fixed !important; 
+        box-sizing: border-box !important;
     }
 
     .data-table tr {
         height: 20% !important; 
     }
     
-    /* Exact 1px inner grid mapping lines with no shadows */
+    /* Perfect single-pixel interior matrix lines mapping */
     .data-table th, .data-table td { 
         border: 1px solid #ffffff !important; 
         padding: 0px !important;
         box-sizing: border-box !important;
     }
 
-    /* Fixed grid percentages align the lines to clean pixel columns */
     .data-table th:nth-child(1), .data-table td:nth-child(1) { width: 44% !important; }
     .data-table th:nth-child(2), .data-table td:nth-child(2) { width: 28% !important; }
     .data-table th:nth-child(3), .data-table td:nth-child(3) { width: 28% !important; }
 
     .data-table th { font-size: 8px !important; }
     
-    /* Fixed pixel configurations force values to stay crisp and centered inside the grid layout */
     .col-param     { font-size: 7.2px !important; padding-left: 4px !important; letter-spacing: -0.2px !important; text-align: left !important; }
     .col-count     { font-size: 13px !important; font-weight: bold !important; } 
     .col-unit      { font-size: 7.5px !important; }
