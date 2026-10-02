@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>LED Construction Board</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LED Matrix Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- LINK TO YOUR SEPARATE JAVASCRIPT FILE -->
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="display-board">
-        <!-- Main Title -->
-        <div class="main-header">CONSTRUCTION BOARD</div>
-        <!-- Put this in the top row of your dashboard layout -->
-        
 
-<div style="color: white; padding: 4px; font-weight: bold; font-family: monospace; font-size: 8px; display: flex; justify-content: space-around; white-space: nowrap; overflow: hidden;">
-    <span id="live-date">DATE: --/--/----</span>
-    <span id="live-time">TIME: --:--:-- --</span>
-</div>
-
-
-        <!-- Data Grid Table -->
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th style="width: 42%;">PARAMETER</th>
-                    <th style="width: 28%;">COUNT</th>
-                    <th style="width: 30%;">UNIT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="col-param">TEMPERATURE</td>
-                    <td class="col-count" id="val-temp">---</td>
-                    <td class="col-unit">°C</td>
-                </tr>
-                <tr>
-                    <td class="col-param">HUMIDITY</td>
-                    <td class="col-count" id="val-humid">---</td>
-                    <td class="col-unit">%</td>
-                </tr>
-                <tr>
-                    <td class="col-param">PM2.5</td>
-                    <td class="col-count" id="val-pm25">---</td>
-                    <td class="col-unit">&micro;g/m&sup3;</td>
-                </tr>
-                <tr>
-                    <td class="col-param">PM10</td>
-                    <td class="col-count" id="val-pm10">----</td>
-                    <td class="col-unit">&micro;g/m&sup3;</td>
-                </tr>
-            </tbody>
-        </table>
+  <!-- Root Dashboard Canvas Frame Container -->
+  <div class="display-board">
+    
+    <!-- Row 1: Top Cyan Main Heading -->
+    <div class="main-header">CONSTRUCTION BOARD</div>
+    
+    <!-- Row 2: Centered Single-Line Date & Time Tracking Grid -->
+    <div class="datetime-row">
+      <span id="live-date">DATE: --/--/----</span>
+      <span class="datetime-spacer"></span>
+      <span id="live-time">TIME: --:--:-- AM</span>
     </div>
+
+    <!-- Row 3: Environmental Data Matrix Table Block -->
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th class="col-param">PARAMETER</th>
+          <th class="col-count">COUNT</th>
+          <th class="col-unit">UNIT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data Row 1: Temperature Section -->
+        <tr>
+          <td class="col-param" id="param-text-1">TEMPERATURE</td>
+          <td class="col-count" id="live-count-1">--.-</td>
+          <td class="col-unit" id="unit-text-1">&deg;C</td>
+        </tr>
+        <!-- Data Row 2: Humidity Section -->
+        <tr>
+          <td class="col-param" id="param-text-2">HUMIDITY</td>
+          <td class="col-count" id="live-count-2">--</td>
+          <td class="col-unit" id="unit-text-2">%</td>
+        </tr>
+        <!-- Data Row 3: PM2.5 Section -->
+        <tr>
+          <td class="col-param" id="param-text-3">PM2.5</td>
+          <td class="col-count" id="live-count-3">--</td>
+          <td class="col-unit" id="unit-text-3">&micro;g/m&sup3;</td>
+        </tr>
+        <!-- Data Row 4: PM10 Section -->
+        <tr>
+          <td class="col-param" id="param-text-4">PM10</td>
+          <td class="col-count" id="live-count-4">--</td>
+          <td class="col-unit" id="unit-text-4">&micro;g/m&sup3;</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
 </body>
 </html>
