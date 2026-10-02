@@ -120,7 +120,7 @@ body, html {
     
     .datetime-row { 
         height: 9.5vh !important; 
-        font-size: 2.7vw !important; /* Scaled precisely to lock into a clean single line block */
+        font-size: 5.5vw !important; /* Scaled precisely to lock into a clean single line block */
         border-bottom: 1px solid #ffffff !important;
         display: flex !important;
         justify-content: center !important;
