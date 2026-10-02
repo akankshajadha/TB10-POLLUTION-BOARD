@@ -106,23 +106,30 @@ body, html {
 
 /* ─── DUAL-LAYER ADVANCED MATRIX HARDWARE OVERRIDE LAYER ─── */
 /* Fires systematically when viewed via full-screen layouts or inside the physical LED display matrix viewports */
-/* ─── AUTOMATED LED SCREEN ACCELERATION MODE ─── */
+/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX CORRECTION LAYER ─── */
+/* Fires systematically when viewed via full-screen layouts or inside the physical LED display matrix viewports */
 @media (max-width: 768px), (display-mode: fullscreen) {
     html, body {
         width: 100% !important;
         height: 100% !important;
         overflow: hidden !important;
-        background-color: #000000;
+        background-color: #000000 !important;
+        
+        /* ADDED: Active center pinning grid to stop the layout from shifting left/down */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .display-board {
-        /* CHANGED: Shrinks the width and height by exactly 2 pixels 
-           to pull the right and bottom borders out of the hidden clipping zone */
+        /* CHANGED: Pulls all 4 sides inward symmetrically out of the hidden clipping zones */
         width: calc(100vw - 2px) !important;              
         height: calc(100vh - 2px) !important;             
-        margin: 1px !important; /* Perfect 1px safety margin offset around the entire grid */
+        margin: 0 auto !important; 
         
-        border: 1px solid #ffffff !important; /* Re-locks the clean single pixel frame on all 4 sides */
+        /* Re-locks the clean single pixel frame uniformly across all 4 boundaries */
+        border: 1px solid #ffffff !important; 
+        box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
     }
@@ -142,6 +149,9 @@ body, html {
     .date-box { 
         padding-left: 6px !important; 
         border-right: 1px solid #ffffff !important; 
+        display: flex !important;
+        justify-content: flex-start !important;
+        gap: 2px !important;
     }
     
     .time-box { 
