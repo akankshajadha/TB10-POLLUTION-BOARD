@@ -55,7 +55,7 @@ body, html {
     width: 100%;
     display: flex;
     height: 10%;               /* CHANGED: Takes exactly 10% of the screen height */
-    font-size: 5.2vw;            /* CHANGED: Scales font dynamically */
+    font-size: 4px;            /* CHANGED: Scales font dynamically */
     color: #ffffff;
     border-bottom: 1px solid #ffffff;
     align-items: center;       /* Vertical centering */
@@ -99,6 +99,7 @@ body, html {
     padding: 0px;
     overflow: hidden;
     white-space: nowrap;
+    bottom border:1px solid#ffffff;
 }
 
 /* Table Category Matrix Header Labels */
@@ -125,4 +126,31 @@ body, html {
     color: #ff4500; 
     font-size: 5.5vw;          
     text-transform: none !important; /* CRITICAL: Prevents the browser from forcing lowercase 'µ' into an uppercase 'M' */
+}
+@media (max-width: 768px), (display-mode: fullscreen) {
+    .display-board {
+        width: 100vw;              
+        height: 100vh;             
+        margin: 0;
+        border: 1px solid #ffffff; 
+    }
+    
+    .main-header { 
+        font-size: 5.5vw; 
+        height: 14vh; 
+    }
+    
+    .datetime-row { 
+        font-size: 3.8vw; 
+        height: 10vh; 
+    }
+    
+    .data-table { 
+        height: 76vh; 
+    }
+    
+    .data-table th { font-size: 4vw; }
+    .col-param { font-size: 3.8vw; }
+    .col-count { font-size: 7.5vw; }
+    .col-unit { font-size: 4vw; }
 }
