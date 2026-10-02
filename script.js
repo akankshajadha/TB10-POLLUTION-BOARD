@@ -22,26 +22,6 @@ const SENSOR_API_URL = 'http://localhost:5000/api/sensors';
 
      document.getElementById('live-time').innerText = `TIME: ${strHours}:${minutes}:${seconds} ${ampm}`;
 }
-// Synchronize the clock function
-function updateClock() {
-    const now = new Date(); // Fetches the calibrated TB10 hardware clock time
-
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    document.getElementById('live-date').innerText = `DATE: ${day}/${month}/${year}`;
-
-    let hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-
-    hours = hours % 12;
-    hours = hours ? hours : 12; // Formats 0 as 12
-    const strHours = String(hours).padStart(2, '0');
-
-    document.getElementById('live-time').innerText = `TIME: ${strHours}:${minutes}:${seconds} ${ampm}`;
-}
 
 // Redraws the time element on the screen once every second
 setInterval(updateClock, 1000);
