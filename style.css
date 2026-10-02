@@ -24,7 +24,6 @@ body, html {
     flex-direction: column;
     overflow: hidden;
     border: 1px solid #ffffff; 
-    
 }
 
 /* Perfect crisp typography mapping without text shadows or blurry anti-aliasing */
@@ -34,7 +33,7 @@ body, html {
     text-transform: uppercase;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: none;
-    font-smoothing: none;
+    /* font-smoothing: none; */
     text-rendering: optimizeSpeed; 
 }
 
@@ -74,9 +73,10 @@ body, html {
 
 .data-table tr {
     height: 20%;    
+}
 
 .data-table th, .data-table td {
- border: 1px solid #ffffff; 
+    border: 1px solid #ffffff; 
     text-align: center;
     vertical-align: middle;
     padding: 2px;
@@ -85,12 +85,14 @@ body, html {
 }
 
 .data-table th { color: #00ffff; font-size: 20px; }
-.col-param { color: #ff4500; font-size: 18px; text-align: center !important; padding-left: 12px !important; }
+.col-param { color: #ff4500; font-size: 18px; text-align: left !important; padding-left: 12px !important; }
 .col-count { color: #00ff00; font-size: 38px; }
 .col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
 
 
-/* ─── FINAL HARDWARE LED SCREEN PARSING MODE (1:1 PIXEL GRAPHICS) ─── */
+/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
+
+/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
 @media (max-width: 768px), (display-mode: fullscreen) {
     html, body {
         width: 100% !important;
@@ -100,37 +102,27 @@ body, html {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        
-        image-rendering: pixelated !important;
-        image-rendering: crisp-edges !important;
     }
 
     .display-board {
-        /* CHANGED: Shrinks the outer container height down by 2 pixels 
-           to pull the bottom border safely out of the hidden clipping zone */
-        width: 100vw !important;              
+        width: calc(100vw - 2px) !important;              
         height: calc(100vh - 2px) !important;             
-        margin: 1px 0 !important; 
-        padding: 0 !important;
-        
-        /* Forces the sharp 1px outer white frame on all 4 sides */
-        border: 1px solid #ffffff !important; 
+        margin: 0 auto !important; 
+        border: 1px solid #ffffff !important; /* Fixes missing outer edges cleanly */
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
-        overflow: hidden !important;
     }
     
     .main-header { 
-        height: 15% !important; 
-        font-size: 11px !important; 
+        height: 13.5vh !important; 
+        font-size: 6.2vw !important; 
         border-bottom: 1px solid #ffffff !important;
-        line-height: 1 !important;
     }
     
     .datetime-row { 
-        height: 10% !important; 
-        font-size: 8.0px !important; 
+        height: 9.5vh !important; 
+        font-size: 5.5vw !important; /* Scaled precisely to lock into a clean single line block */
         border-bottom: 1px solid #ffffff !important;
         display: flex !important;
         justify-content: center !important;
@@ -138,7 +130,7 @@ body, html {
     }
     
     .datetime-spacer {
-        width: 12px !important; 
+        width: 4vw !important;
     }
 
     #live-date, #live-time {
@@ -148,33 +140,21 @@ body, html {
     }
     
     .data-table { 
-        /* CHANGED: Forces the table to stay strictly inside the 75% height boundary 
-           so it cannot overflow and squeeze out the outer bottom line */
-        height: 75% !important; 
-        max-height: 75% !important;
+        height: 77vh !important; 
         border-collapse: collapse !important;
-        table-layout: fixed !important; 
-        box-sizing: border-box !important;
     }
 
     .data-table tr {
         height: 20% !important; 
     }
     
-    /* Perfect single-pixel interior matrix lines mapping */
     .data-table th, .data-table td { 
         border: 1px solid #ffffff !important; 
         padding: 0px !important;
-        box-sizing: border-box !important;
     }
 
-    .data-table th:nth-child(1), .data-table td:nth-child(1) { width: 44% !important; }
-    .data-table th:nth-child(2), .data-table td:nth-child(2) { width: 28% !important; }
-    .data-table th:nth-child(3), .data-table td:nth-child(3) { width: 28% !important; }
-
-    .data-table th { font-size: 8px !important; }
-    
-    .col-param     { font-size: 7.2px !important; padding-left: 4px !important; letter-spacing: -0.2px !important; text-align: left !important; }
-    .col-count     { font-size: 13px !important; font-weight: bold !important; } 
-    .col-unit      { font-size: 7.5px !important; }
+    .data-table th { font-size: 4.2vw !important; }
+    .col-param     { font-size: 5.0vw !important; padding-left: 4px !important; letter-spacing: -0.2px !important; }
+    .col-count     { font-size: 7.8vw !important; } 
+    .col-unit      { font-size: 5.2vw !important; }
 }
