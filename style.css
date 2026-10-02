@@ -23,7 +23,7 @@ body, html {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    outline: 1px solid #ffffff; /* Single unified outer border edge */
+    border: 1px solid #ffffff; 
 }
 
 /* Perfect crisp typography mapping without text shadows or blurry anti-aliasing */
@@ -33,6 +33,7 @@ body, html {
     text-transform: uppercase;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: none;
+    /* font-smoothing: none; */
     text-rendering: optimizeSpeed; 
 }
 
@@ -45,7 +46,7 @@ body, html {
     display: flex;
     align-items: center;       
     justify-content: center;   
-    outline: 1px solid #ffffff; 
+    border-bottom: 1px solid #ffffff; 
 }
 
 .datetime-row {
@@ -54,7 +55,7 @@ body, html {
     height: 45px;               
     font-size: 15px;        
     color: #ffffff;
-    outline: 1px solid #ffffff;  
+    border-bottom: 1px solid #ffffff;  
     justify-content: center;
     align-items: center;       
 }
@@ -63,41 +64,33 @@ body, html {
     width: 24px;
 }
 
-/* Unified single border setup using flex-based structural rows */
 .data-table {
     width: 100%;
-    height: 480px;               
-    display: flex;
-    flex-direction: column;
+    height: 478px;               
+    border-collapse: collapse; 
+    table-layout: fixed; 
 }
 
 .data-table tr {
-    display: flex;
-    width: 100%;
-    flex: 1; /* Automatically splits the rows into 5 perfectly equal 20% tracks */
+    height: 20%;    
 }
 
 .data-table th, .data-table td {
-    flex: 1;
-    outline: 1px solid #ffffff; /* Replaces messy collapsing borders with crisp single paths */
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid #ffffff; 
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
     overflow: hidden;
     white-space: nowrap;
 }
 
-/* Column distribution width locks matching matrix panel proportions */
-.data-table th:nth-child(1), .data-table td:nth-child(1) { flex: 1.3; } /* Left Column slightly wider */
-.data-table th:nth-child(2), .data-table td:nth-child(2) { flex: 1.0; } /* Center Column */
-.data-table th:nth-child(3), .data-table td:nth-child(3) { flex: 0.9; } /* Right Column */
-
 .data-table th { color: #00ffff; font-size: 20px; }
-.col-param { color: #ff4500; font-size: 18px; justify-content: flex-start !important; padding-left: 12px !important; }
+.col-param { color: #ff4500; font-size: 18px; text-align: left !important; padding-left: 12px !important; }
 .col-count { color: #00ff00; font-size: 38px; }
 .col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
 
+
+/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
 
 /* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
 @media (max-width: 768px), (display-mode: fullscreen) {
@@ -112,28 +105,25 @@ body, html {
     }
 
     .display-board {
-        width: 100vw !important;              
-        height: 100vh !important;             
+        width: calc(100vw - 2px) !important;              
+        height: calc(100vh - 2px) !important;             
         margin: 0 auto !important; 
-        outline: 1px solid #ffffff !important; 
+        border: 1px solid #ffffff !important; /* Fixes missing outer edges cleanly */
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
-        border: none !important;
     }
     
     .main-header { 
         height: 13.5vh !important; 
         font-size: 6.2vw !important; 
-        outline: 1px solid #ffffff !important;
-        border: none !important;
+        border-bottom: 1px solid #ffffff !important;
     }
     
     .datetime-row { 
         height: 9.5vh !important; 
-        font-size: 5.2vw !important; 
-        outline: 1px solid #ffffff !important;
-        border: none !important;
+        font-size: 5.5vw !important; /* Scaled precisely to lock into a clean single line block */
+        border-bottom: 1px solid #ffffff !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
@@ -151,25 +141,20 @@ body, html {
     
     .data-table { 
         height: 77vh !important; 
-        display: flex !important;
-        flex-direction: column !important;
+        border-collapse: collapse !important;
     }
 
     .data-table tr {
-        display: flex !important;
-        width: 100% !important;
-        flex: 1 !important; 
-        height: auto !important;
+        height: 20% !important; 
     }
     
     .data-table th, .data-table td { 
-        outline: 1px solid #ffffff !important; 
+        border: 1px solid #ffffff !important; 
         padding: 0px !important;
-        border: none !important;
     }
 
     .data-table th { font-size: 4.2vw !important; }
-    .col-param     { font-size: 5.0vw !important; justify-content: flex-start !important; padding-left: 6px !important; letter-spacing: -0.2px !important; }
+    .col-param     { font-size: 5.0vw !important; padding-left: 4px !important; letter-spacing: -0.2px !important; }
     .col-count     { font-size: 7.8vw !important; } 
     .col-unit      { font-size: 5.2vw !important; }
 }
