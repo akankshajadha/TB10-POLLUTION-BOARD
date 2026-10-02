@@ -6,15 +6,15 @@
 }
 
 body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #000; /* Keeps background dark for the LED grid */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000; /* Keeps background dark for the LED grid */
 }
 
-/* ─── CHANGED: FULL SCREEN VIEWPORT CANVASES ─── */
+/* Base typography properties */
 .main-header, .datetime-row, .data-table {
     font-family: Arial, Helvetica, sans-serif; 
     font-weight: bold;
@@ -24,25 +24,15 @@ body, html {
     font-smoothing: none;
     text-rendering: optimizeSpeed; 
 }
-    .display-board {
-    width: 100vw;              /* CHANGED: Stretches across the full screen width */
-    height: 100vh;             /* CHANGED: Stretches across the full screen height */
+
+.display-board {
+    width: 100vw;              
+    height: 100vh;             
     background-color: #000000;
     border: 1px solid #ffffff;  
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-left: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
-    border-top: 1px solid #ffffff;
-}
-
-/* Bold typography ensures clear pixel mapping for distant reading */
-.main-header, .datetime-row, .data-table {
-    font-family: Arial, Helvetica, sans-serif; 
-    font-weight: bold;
-    text-transform: uppercase;
 }
 
 /* Main Top Header Banner */
@@ -50,10 +40,10 @@ body, html {
     width: 100%;
     text-align: center;
     color: #00ffff; /* Cyan */
-    font-size: 7.7vw;            /* CHANGED: Dynamically scales font with width */
-    height: 16%;               /* CHANGED: Takes exactly 12% of the screen height */
+    font-size: 18px;            /* FIXED: Replaced loose vw with fixed crisp size */
+    height: 14%;               
     display: flex;
-     line-height: 18px;
+    line-height: 1.1;
     align-items: center;       /* Vertical centering */
     justify-content: center;   /* Horizontal centering */
     border-bottom: 1px solid #ffffff;
@@ -63,8 +53,8 @@ body, html {
 .datetime-row {
     width: 100%;
     display: flex;
-    height: 10vh;               
-    font-size: 5.2vw;        
+    height: 12%;               
+    font-size: 11px;            /* FIXED: Shrinks text down so it never spills over columns */
     color: #ffffff;
     border-bottom: 1px solid #ffffff;  
     align-items: center;       
@@ -72,40 +62,39 @@ body, html {
 
 .date-box {
     width: 50%;                
-    padding-left: 4px;         /* Minimizes space from the left frame line */
-    text-align: left;          /* Forces text to hug the left side border */
-    /* border-right: 1px solid #ffffff;  */
+    padding-left: 6px;         /* Keeps a clean indent from left frame line */
+    text-align: left;          
     white-space: nowrap;
+    overflow: hidden;
 }
+
 .time-box {
-    width: 50%;                /* CHANGED: Balanced out cleanly */
-    padding-right: 8px;
+    width: 50%;                
+    padding-right: 6px;        /* Keeps a clean indent from middle split line */
     text-align: right;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 /* Main Matrix Data Table Block */
 .data-table {
     width: 100%;
-    height: 73%; 
+    height: 74%; 
     border-collapse: collapse;
-    flex-grow: 1;              /* Automatically fills all remaining vertical screen space */
     table-layout: fixed; 
-      border-left: 1px solid #ffffff; 
 }
 
-/* CHANGED: Table Row Distribution Hook */
+/* Evenly distribute the 5 rows across the vertical canvas space */
 .data-table tr {
-       height: 20%;    
-    height: calc(100% / 10);     /* CHANGED: Forces rows to divide the remaining vertical space evenly */
+    height: 20%;    
 }
 
 .data-table th, 
 .data-table td {
     border: 1px solid #ffffff; 
     text-align: center;
-    vertical-align:center;
-    padding: 0px;
+    vertical-align: middle;
+    padding: 2px;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -113,40 +102,40 @@ body, html {
 /* Table Category Matrix Header Labels */
 .data-table th {
     color: #00ffff; /* Cyan */
-    font-size: 6vw;          /* CHANGED: Scaled up font */
-    text-align: center;
+    font-size: 12px;          /* FIXED: Scaled safely for small columns */
 }
 
 /* Environmental Parameter Titles Column (Left) */
 .col-param {
     color: #ff4500; /* Vibrant Orange-Red */
-    font-size: 5vw;            /* CHANGED: Scaled up font */
+    font-size: 11px;            /* FIXED: Sized down to fit 'TEMPERATURE' without clipping */
     letter-spacing: -0.5px; 
 }
 
 /* Numeric Realtime Counter Values Column (Center) */
 .col-count {
     color: #00ff00; /* Bright Green */
-    font-size: 6.8vw;            /* CHANGED: Blown up much larger for high readability */
+    font-size: 16px;            /* FIXED: Large and readable but safe */
 }
 
 /* Metric Units Label Tags Column (Right) */
 .col-unit {
     color: #ff4500; 
-    font-size: 5.5vw;          
-    text-transform: none !important; /* CRITICAL: Prevents the browser from forcing lowercase 'µ' into an uppercase 'M' */
+    font-size: 11px;          
+    text-transform: none !important; /* CRITICAL: Prevents converting 'µ' into 'M' */
 }
+
+/* Desktop Monitor Mirror (Keeps layouts scalable during development testing) */
 @media (min-width: 769px) {
     .display-board {
         width: 480px;
         height: 480px;
         margin: 40px auto;
     }
-    .main-header { font-size: 26px; height: 60px; }
-    .datetime-row { font-size: 16px; height: 40px; }
-    .data-table { height: 380px; }
+    .main-header { font-size: 26px; }
+    .datetime-row { font-size: 16px; }
     .data-table th { font-size: 18px; }
-    .col-param { font-size: 16px; }
+    .col-param { font-size: 14px; }
     .col-count { font-size: 32px; }
-    .col-unit { font-size: 18px; }
+    .col-unit { font-size: 16px; }
 }
