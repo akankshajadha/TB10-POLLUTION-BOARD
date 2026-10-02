@@ -24,6 +24,7 @@ body, html {
     flex-direction: column;
     overflow: hidden;
     border: 1px solid #ffffff; 
+    
 }
 
 /* Perfect crisp typography mapping without text shadows or blurry anti-aliasing */
@@ -46,7 +47,7 @@ body, html {
     display: flex;
     align-items: center;       
     justify-content: center;   
-    border-bottom: 1px solid #ffffff; 
+    /* border-bottom: 1px solid #ffffff;  */
 }
 
 .datetime-row {
@@ -66,7 +67,7 @@ body, html {
 
 .data-table {
     width: 100%;
-    height: 470px;               
+    height: 478px;               
     border-collapse: collapse; 
     table-layout: fixed; 
 }
@@ -76,7 +77,7 @@ body, html {
 }
 
 .data-table th, .data-table td {
-    border: 1px solid #ffffff; 
+    /* border: 1px solid #ffffff;  */
     text-align: center;
     vertical-align: middle;
     padding: 2px;
@@ -85,7 +86,7 @@ body, html {
 }
 
 .data-table th { color: #00ffff; font-size: 20px; }
-.col-param { color: #ff4500; font-size: 18px; text-align: left !important; padding-left: 12px !important; }
+.col-param { color: #ff4500; font-size: 18px; text-align: center !important; padding-left: 12px !important; }
 .col-count { color: #00ff00; font-size: 38px; }
 .col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
 
