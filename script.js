@@ -1,6 +1,12 @@
 // ─── CONFIGURATION ENDPOINT ───
-// REPLACE THIS PATH WITH YOUR EXACT SENSOR API URL (e.g., "http://192.168.1")
-const SENSOR_API_ENDPOINT = "YOUR_API_ENDPOINT_URL_HERE"; 
+/* OPTION A: If your HTML file and API are running on the SAME ESP32/Raspberry Pi, 
+   use a relative path like "/data" or "/api". This completely bypasses security blocks! */
+const SENSOR_API_ENDPOINT = "/data"; 
+
+/* OPTION B: If your API is on a completely different IP address, uncomment the line below 
+   and replace it with your exact data link: */
+// const SENSOR_API_ENDPOINT = "http://192.168.1"; 
+
 
 // ─── BACKGROUND LOGIC 1: LIVE CLOCK ENGINE ───
 function refreshMatrixClock() {
@@ -26,41 +32,42 @@ function refreshMatrixClock() {
   if (timeBox) timeBox.innerText = "TIME:" + hrsStr + ":" + mins + ":" + secs + " " + suffix;
 }
 
-// ─── BACKGROUND LOGIC 2: FLEXIBLE SENSOR PARSING ───
+// ─── BACKGROUND LOGIC 2: HARDWARE-COMPATIBLE FETCH LOOP ───
 async function fetchSensorMetrics() {
   try {
-    // Fallback protection: If URL is not set yet, simulate data so it looks right in the browser
-    if (SENSOR_API_ENDPOINT === "YOUR_API_ENDPOINT_URL_HERE") {
-        updateDOMFields("TEMPERATURE", "30.8", "HUMIDITY", "76", "PM2.5", "20", "PM10", "32");
-        return;
-    }
+    // Standard Fetch Request with hardware compatibility flags
+    const response = await fetch(SENSOR_API_ENDPOINT, {
+        method: 'GET',
+        mode: 'cors', // Explicitly requests data sharing clearance
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
 
-    const response = await fetch(SENSOR_API_ENDPOINT);
-    if (!response.ok) throw new Error("Network stream down");
+    if (!response.ok) throw new Error("Hardware stream connection error");
     const data = await response.json();
     
-    /* 
-       This handles whatever format your API uses. 
-       Adjust the keys below (data.temp, data.humidity, etc.) to match your actual API names exactly.
-    */
-    const tempVal = data.temperature || data.temp || data.t || "30.8";
-    const humVal  = data.humidity || data.hum || data.h || "76";
-    const pm25Val = data.pm25 || data.pm2_5 || "20";
-    const pm10Val = data.pm10 || "32";
+    // Multi-key parser reads whatever data names your server provides
+    const tempVal = data.temperature || data.temp || data.t || "--.-";
+    const humVal  = data.humidity || data.hum || data.h || "--";
+    const pm25Val = data.pm25 || data.pm2_5 || "--";
+    const pm10Val = data.pm10 || "--";
 
     updateDOMFields("TEMPERATURE", tempVal, "HUMIDITY", humVal, "PM2.5", pm25Val, "PM10", pm10Val);
 
   } catch (err) {
-    console.error("Live streaming diagnostics active. Running safe offline simulation mode:", err);
-    // Safe mode fallback: Keeps screen visually functional if connection drops
-    updateDOMFields("TEMPERATURE", "30.8", "HUMIDITY", "76", "PM2.5", "20", "PM10", "32");
+    console.error("LED screen network blocked. Check physical connections or endpoint settings:", err);
+    // Do not overwrite display parameters with blanks if a temporary timeout happens
   }
 }
 
-// Helper function to handle text updates safely without crashing
+// Helper function to update screen layout safely
 function updateDOMFields(p1, v1, p2, v2, p3, v3, p4, v4) {
     if(document.getElementById('param-text-1')) document.getElementById('param-text-1').innerText = p1;
-    if(document.getElementById('live-count-1')) document.getElementById('live-count-1').innerText = typeof v1 === 'number' ? v1.toFixed(1) : v1;
+    if(document.getElementById('live-count-1')) {
+        document.getElementById('live-count-1').innerText = (typeof v1 === 'number') ? v1.toFixed(1) : v1;
+    }
     
     if(document.getElementById('param-text-2')) document.getElementById('param-text-2').innerText = p2;
     if(document.getElementById('live-count-2')) document.getElementById('live-count-2').innerText = v2;
@@ -77,6 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshMatrixClock();
     fetchSensorMetrics();
     
-    setInterval(refreshMatrixClock, 1000);  // Update clock every 1 second
-    setInterval(fetchSensorMetrics, 5000);  // Update sensor data loops every 5 seconds
+    setInterval(refreshMatrixClock, 1000); // Live ticking every 1 second
+    setInterval(fetchSensorMetrics, 3000); // Poll hardware data every 3 seconds
 });
