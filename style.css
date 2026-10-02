@@ -16,15 +16,15 @@ body, html {
 
 /* ─── BASE STYLES FOR THE DESKTOP WEB PAGE PREVIEW ─── */
 .display-board {
-    width: 600px;           /* Proportional preview size for desktop browsers */
+    width: 600px;           
     height: 600px;
-    margin: 40px auto;      /* Centers the preview board on your screen */
+    margin: 40px auto;      
     background-color: #000000;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     
-    /* Perfect clean single pixel frame enclosing the outer edges */
+    /* Strong base frame boundary */
     border: 1px solid #ffffff; 
     box-sizing: border-box; 
 }
@@ -50,7 +50,7 @@ body, html {
     display: flex;
     align-items: center;       
     justify-content: center;   
-    border-bottom: 1px solid #ffffff; /* Sharp separator line below banner */
+    border-bottom: 1px solid #ffffff; 
 }
 
 /* Date and Time Grid Setup */
@@ -60,7 +60,7 @@ body, html {
     height: 40px;               
     font-size: 16px;        
     color: #ffffff;
-    border-bottom: 1px solid #ffffff; /* Sharp separator line below date/time row */
+    border-bottom: 1px solid #ffffff; 
     align-items: center;       
 }
 
@@ -68,7 +68,7 @@ body, html {
     width: 50%;                
     padding-left: 8px;         
     text-align: left;          
-    border-right: 1px solid #ffffff; /* Sharp vertical line separating date & time */
+    border-right: 1px solid #ffffff; 
     white-space: nowrap;
 }
 
@@ -79,11 +79,11 @@ body, html {
     white-space: nowrap;
 }
 
-/* ─── FIXED: UNIFORM DATA TABLE GRID LINES ─── */
+/* Data Table Grid Lines Setup */
 .data-table {
     width: 100%;
-    height: 490px;               
-    border-collapse: collapse; /* Merges cell lines together seamlessly into single lines */
+    height: 488px;               
+    border-collapse: collapse; 
     table-layout: fixed; 
 }
 
@@ -91,7 +91,7 @@ body, html {
     height: calc(100% / 5);    
 }
 
-/* CHANGED: Universal clean 1px border rule applied systematically to every cell boundary */
+/* Universal clean 1px border rule applied systematically to cell boundaries */
 .data-table th, 
 .data-table td {
     border: 1px solid #ffffff; 
@@ -141,17 +141,23 @@ body, html {
         height: 14vh; 
     }
     
+    /* CHANGED: Shrink text slightly and force strict bounds to fix the LED screen sizing bug */
     .datetime-row { 
-        font-size: 3.8vw; 
+        font-size: 3.2vw; /* REDUCED: Prevents text from being too big on the LED screen panel */
         height: 10vh; 
+        max-height: 10vh;
+        box-sizing: border-box;
     }
     
+    /* CHANGED: Fits perfectly into layout without leaking bottom space gaps */
     .data-table { 
-        height: 76vh; 
+        height: 74vh; 
+        max-height: 74vh;
+        box-sizing: border-box;
     }
     
     .data-table th { font-size: 4vw; }
-    .col-param { font-size: 3.8vw; }
+    .col-param { font-size: 3.6vw; }  /* OPTIMIZED: Fits titles without squishing */
     .col-count { font-size: 7.5vw; }
     .col-unit { font-size: 4vw; }
 }
