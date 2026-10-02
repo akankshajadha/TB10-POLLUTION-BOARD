@@ -152,7 +152,7 @@ body, html {
     }
 
     .data-table th { font-size: 4.2vw !important; }
-    .col-param     { font-size: 3.6vw !important; padding-left: 6px !important; letter-spacing: -0.2px !important; }
+    .col-param     { font-size: 5.6vw !important; padding-left: 4px !important; letter-spacing: -0.2px !important; }
     .col-count     { font-size: 7.8vw !important; } 
-    .col-unit      { font-size: 4.2vw !important; }
+    .col-unit      { font-size: 5.2vw !important; }
 }
