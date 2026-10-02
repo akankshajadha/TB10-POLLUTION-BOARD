@@ -50,11 +50,13 @@ body, html {
 }
 
 /* Date and Time Sub-container grid setup */
+/* Find these specific classes in your style.css and update their values */
+
 .datetime-row {
     width: 100%;
     display: flex;
     height: 12%;               
-    font-size: 11px;            /* FIXED: Shrinks text down so it never spills over columns */
+    font-size: 3.5vw;        
     color: #ffffff;
     border-bottom: 1px solid #ffffff;  
     align-items: center;       
@@ -62,42 +64,40 @@ body, html {
 
 .date-box {
     width: 50%;                
-    padding-left: 6px;         /* Keeps a clean indent from left frame line */
+    padding-left: 10px;         
     text-align: left;          
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .time-box {
     width: 50%;                
-    padding-right: 6px;        /* Keeps a clean indent from middle split line */
+    padding-right: 10px;
     text-align: right;
     white-space: nowrap;
-    overflow: hidden;
 }
 
-/* Main Matrix Data Table Block */
 .data-table {
     width: 100%;
-    height: 74%; 
+    height: 74%;               /* Adjusts table height to consume the lower panel area */
     border-collapse: collapse;
     table-layout: fixed; 
 }
 
-/* Evenly distribute the 5 rows across the vertical canvas space */
+/* FIXED ROW HEIGHT FOR 5 ROWS TOTAL (1 THEAD ROW + 4 TBODY ROWS) */
 .data-table tr {
-    height: 20%;    
+    height: 20%;               /* 5 rows multiplied by 20% = Exactly 100% total height */
 }
 
 .data-table th, 
 .data-table td {
     border: 1px solid #ffffff; 
     text-align: center;
-    vertical-align: middle;
-    padding: 2px;
+    vertical-align: middle;    /* Centers text vertically in the box */
+    padding: 0px;
     overflow: hidden;
     white-space: nowrap;
 }
+
 
 /* Table Category Matrix Header Labels */
 .data-table th {
