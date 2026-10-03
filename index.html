@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LED Matrix Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- LINK TO YOUR SEPARATE JAVASCRIPT FILE -->
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Construction Board</title>
+    <!-- Links to your separate style sheet file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Root Dashboard Canvas Frame Container -->
-  <div class="display-board">
-    
-    <!-- Row 1: Top Cyan Main Heading -->
-    <div class="main-header">CONSTRUCTION BOARD</div>
-    
-    <!-- Row 2: Centered Single-Line Date & Time Tracking Grid -->
-    <div class="datetime-row">
-      <span id="live-date">DATE: --/--/----</span>
-      <span class="datetime-spacer"></span>
-      <span id="live-time">TIME: --:--:-- AM</span>
+    <div class="main-container">
+        <!-- Main Header Title -->
+        <div class="title" id="board-title">CONSTRUCTION BOARD</div>
+
+        <!-- Real-Time Date/Time Bar -->
+        <div class="datetime-row">
+            <div>DATE:<span id="current-date">03/10/2026</span></div>
+            <div>TIME:<span id="current-time">11:11:01 AM</span></div>
+        </div>
+
+        <!-- Clean Grid Table Matrix -->
+        <table>
+            <thead>
+                <tr>
+                    <th class="header-param">PARAMETER</th>
+                    <th class="header-count">COUNT</th>
+                    <th class="header-unit">UNIT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Temperature Row -->
+                <tr>
+                    <td class="label">TEMPERATURE</td>
+                    <td class="value" id="temp-val">30.4</td>
+                    <td class="unit">&deg;C</td>
+                </tr>
+                <!-- Humidity Row -->
+                <tr>
+                    <td class="label">HUMIDITY</td>
+                    <td class="value" id="hum-val">75</td>
+                    <td class="unit">%</td>
+                </tr>
+                <!-- PM2.5 Row -->
+                <tr>
+                    <td class="label">PM2.5</td>
+                    <td class="value" id="pm25-val">20</td>
+                    <td class="unit">&mu;g/m&sup3;</td>
+                </tr>
+                <!-- PM10 Row -->
+                <tr>
+                    <td class="label">PM10</td>
+                    <td class="value" id="pm10-val">32</td>
+                    <td class="unit">&mu;g/m&sup3;</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <!-- Row 3: Environmental Data Matrix Table Block -->
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th class="col-param">PARAMETER</th>
-          <th class="col-count">COUNT</th>
-          <th class="col-unit">UNIT</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Data Row 1: Temperature Section -->
-        <tr>
-          <td class="col-param" id="param-text-1">TEMPERATURE</td>
-          <td class="col-count" id="live-count-1">--.-</td>
-          <td class="col-unit" id="unit-text-1">&deg;C</td>
-        </tr>
-        <!-- Data Row 2: Humidity Section -->
-        <tr>
-          <td class="col-param" id="param-text-2">HUMIDITY</td>
-          <td class="col-count" id="live-count-2">--</td>
-          <td class="col-unit" id="unit-text-2">%</td>
-        </tr>
-        <!-- Data Row 3: PM2.5 Section -->
-        <tr>
-          <td class="col-param" id="param-text-3">PM2.5</td>
-          <td class="col-count" id="live-count-3">--</td>
-          <td class="col-unit" id="unit-text-3">&micro;g/m&sup3;</td>
-        </tr>
-        <!-- Data Row 4: PM10 Section -->
-        <tr>
-          <td class="col-param" id="param-text-4">PM10</td>
-          <td class="col-count" id="live-count-4">--</td>
-          <td class="col-unit" id="unit-text-4">&micro;g/m&sup3;</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-
+    <!-- Links to your separate logic script file -->
+    <script src="script.js"></script>
 </body>
 </html>
