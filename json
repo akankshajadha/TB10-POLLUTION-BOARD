@@ -1,0 +1,19 @@
+const express = require('express');
+const cors = require('cors'); // Essential to bypass Taurus security policies
+const app = express();
+
+app.use(cors());
+
+// Mocking sensor data storage (Replace this object with your actual physical sensor input)
+let sensorReadings = {
+    temperature: 30.3,
+    humidity: 74,
+    pm25: 15,
+    pm10:45,
+};
+
+app.get('/api/sensors', (req, res) => {
+    res.json(sensorReadings);
+});
+
+app.listen(3000, () => console.log('TB10 Data Server running on Port 3000'));
