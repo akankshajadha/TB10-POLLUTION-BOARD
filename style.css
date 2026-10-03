@@ -46,19 +46,32 @@ body {
     background: #111111;
 }
 
-/* Collapses all double overlapping line grids into clean single borders */
+/* Collapses grids into clean single borders and hides table's main side walls */
 table {
     width: 100%;
     border-collapse: collapse;
     flex-grow: 1;
+    border-left: none !important;
+    border-right: none !important;
 }
 
+/* Keeps internal grid lines but allows us to override edges */
 th, td {
     border: 1px solid #ffffff;
     text-align: center;
     font-weight: bold;
     vertical-align: middle;
     padding: 0px 4px;
+}
+
+/* REMOVES LEFT BORDER LINE FROM THE FIRST COLUMN (PARAMETER) */
+th:first-child, td:first-child {
+    border-left: none !important;
+}
+
+/* REMOVES RIGHT BORDER LINE FROM THE LAST COLUMN (UNIT) */
+th:last-child, td:last-child {
+    border-right: none !important;
 }
 
 /* Header Columns Layout Dimensions configuration rules */
