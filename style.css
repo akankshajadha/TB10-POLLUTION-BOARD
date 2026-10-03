@@ -1,4 +1,4 @@
-/* Core sizing layout properties for the 320x160 LED matrix display canvas */
+/* Core layout sizing properties optimized explicitly for 160x160 LED matrix */
 * { 
     box-sizing: border-box; 
     margin: 0; 
@@ -9,14 +9,14 @@ body {
     background: #000000; 
     color: #ffffff; 
     font-family: 'Arial', sans-serif; 
-    width: 320px; 
+    width: 160px; 
     height: 160px; 
     overflow: hidden;
     user-select: none;
-    padding: 2px;
+    padding: 1px;
 }
 
-/* Single 1px unified clean outer box wrapper border line */
+/* Single 1px unified outer frame box boundary wrapper line */
 .main-container {
     width: 100%;
     height: 100%;
@@ -25,88 +25,93 @@ body {
     flex-direction: column;
 }
 
-/* Screen Main Title Heading label banner style */
+/* Screen Title Header text formatting */
 .title {
     color: #00ffcc;
-    font-size: 13px;
+    font-size: 8px;
     font-weight: bold;
     text-align: center;
     padding: 1px 0;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    border-bottom: 1px solid #ffffff;
 }
 
-/* Center Horizontal Date and Time Layout row wrapper block elements */
+/* Date and Time row blocks adjusted to stack neatly or wrap tightly */
 .datetime-row {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column; /* Stacks Date & Time vertically to save width */
+    align-items: center;
     color: #ffffff;
-    font-size: 10px;
+    font-size: 7px;
     font-weight: bold;
     padding: 1px 0;
     background: #111111;
+    border-bottom: 1px solid #ffffff;
+    line-height: 1.1;
 }
 
-/* Collapses grids into clean single borders and hides table's main side walls */
+/* Collapses all internal grids cleanly into single lines */
 table {
     width: 100%;
+    table-layout: fixed; 
     border-collapse: collapse;
     flex-grow: 1;
     border-left: none !important;
     border-right: none !important;
+    border-bottom: none !important;
 }
 
-/* Keeps internal grid lines but allows us to override edges */
 th, td {
     border: 1px solid #ffffff;
     text-align: center;
     font-weight: bold;
     vertical-align: middle;
-    padding: 0px 4px;
+    padding: 0px 1px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-/* REMOVES LEFT BORDER LINE FROM THE FIRST COLUMN (PARAMETER) */
-th:first-child, td:first-child {
-    border-left: none !important;
-}
+/* Removes outer wall border artifacts from side margins */
+th:first-child, td:first-child { border-left: none !important; }
+th:last-child, td:last-child { border-right: none !important; }
 
-/* REMOVES RIGHT BORDER LINE FROM THE LAST COLUMN (UNIT) */
-th:last-child, td:last-child {
-    border-right: none !important;
-}
-
-/* Header Columns Layout Dimensions configuration rules */
+/* Micro Column Heading sizing constraints */
 th {
-    font-size: 9px;
+    font-size: 7px;
     color: #00ffff;
-    height: 16px;
+    height: 11px;
     text-transform: uppercase;
 }
-.header-param { text-align: left; padding-left: 4px; width: 42%; }
-.header-count { width: 28%; }
+
+/* Explicit widths mapped to perfectly balanced column sizing partitions */
+.header-param { text-align: left; padding-left: 2px; width: 44%; }
+.header-count { width: 26%; }
 .header-unit { width: 30%; }
 
-/* Parameter Items Data Rows height spacing dimensions mapping rules */
+/* Parameter row cell text size height allocations */
 td {
-    height: 23px;
+    height: 24px;
 }
 
-/* Individual Cell specific colors matching physical LED output styles */
+/* Individual Cell specific typography values matching hardware outputs */
 .label {
     text-align: left;
-    font-size: 9px;
-    color: #ff0000; /* Crisp Red parameters names text layout scale */
+    font-size: 7px;
+    color: #ff0000; /* Parameter names in Red */
+    padding-left: 2px;
 }
 
 .value {
-    font-size: 13px;
-    color: #00ff00; /* Digital bright Green metrics number values scale */
+    font-size: 9px;
+    color: #00ff00; /* Metric numbers in bright Green */
 }
 
 .unit {
-    font-size: 9px;
-    color: #ff3300; /* Bright Orange units parameter formatting rule */
+    font-size: 7px;
+    color: #ff3300; /* Units in Orange/Red */
 }
 
-/* Real-time Dynamic network connection offline styling fallback states triggers */
+/* Real-time Dynamic network connection offline backup configuration rules */
 body.offline-mode .main-container { border-color: #ff0000; }
 body.offline-mode .title { color: #ff0000; }
