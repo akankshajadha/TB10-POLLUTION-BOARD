@@ -1,160 +1,114 @@
-/* Zero out browser canvas parameters */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #000000; 
+body { 
+    background: #000000; 
+    color: #ffffff; 
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    width: 160px; 
+    height: 160px; 
+    overflow: hidden;
+    user-select: none;
+    padding: 1px;
 }
 
-/* ─── BASE STYLES FOR THE DESKTOP URL / WEB PAGE PREVIEW ─── */
-.display-board {
-    width: 600px;           
-    height: 600px;
-    margin: 40px auto;      
-    background-color: #000000;
+/* Changed outer border to 0.7px light gray to lock it to 1 single hardware pixel line */
+.main-container {
+    width: 100%;
+    height: 100%;
+    border: 0.7px solid #cccccc;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    border: 1px solid #ffffff; 
+    background: #000000;
 }
 
-/* Perfect crisp typography mapping without text shadows or blurry anti-aliasing */
-.main-header, .datetime-row, .data-table {
-    font-family: Arial, Helvetica, sans-serif; 
-    font-weight: bold;
-    text-transform: uppercase;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: none;
-    /* font-smoothing: none; */
-    text-rendering: optimizeSpeed; 
-}
-
-.main-header {
-    width: 100%;
+.title {
+    color: #00ffff;
+    font-size: 10px;
+    font-weight: 900;
     text-align: center;
-    color: #00ffff; 
-    font-size: 28px;        
-    height: 75px;               
-    display: flex;
-    align-items: center;       
-    justify-content: center;   
-    border-bottom: 1px solid #ffffff; 
-}
-
-.datetime-row {
-    width: 100%;
-    display: flex;
-    height: 45px;               
-    font-size: 15px;        
-    color: #ffffff;
-    border-bottom: 1px solid #ffffff;  
-    justify-content: center;
-    align-items: center;       
-}
-
-.datetime-spacer {
-    width: 24px;
-}
-
-.data-table {
-    width: 100%;
-    height: 478px;               
-    border-collapse: collapse; 
-    table-layout: fixed; 
-}
-
-.data-table tr {
-    height: 20%;    
-}
-
-.data-table th, .data-table td {
-    border: 1px solid #ffffff; 
-    text-align: center;
-    vertical-align: middle;
-    padding: 2px;
-    overflow: hidden;
+    padding: 1px 0;
+    background: #000000;
+    border-bottom: 0.7px solid #cccccc; /* Changed to thin single line divider */
     white-space: nowrap;
 }
 
-.data-table th { color: #00ffff; font-size: 20px; }
-.col-param { color: #ff4500; font-size: 18px; text-align: left !important; padding-left: 12px !important; }
-.col-count { color: #00ff00; font-size: 38px; }
-.col-unit { color: #ff4500; font-size: 20px; text-transform: none !important; }
-
-
-/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
-
-/* ─── FIXED DUAL-AXIS CONTROLLER MATRIX HARDWARE OVERRIDE LAYER ─── */
-@media (max-width: 768px), (display-mode: fullscreen) {
-    html, body {
-        width: 100% !important;
-        height: 100% !important;
-        overflow: hidden !important;
-        background-color: #000000 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    .display-board {
-        width: calc(100vw - 2px) !important;              
-        height: calc(100vh - 2px) !important;             
-        margin: 0 auto !important; 
-        border: 1px solid #ffffff !important; /* Fixes missing outer edges cleanly */
-        box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
-    .main-header { 
-        height: 13.5vh !important; 
-        font-size: 6.2vw !important; 
-        border-bottom: 1px solid #ffffff !important;
-    }
-    
-    .datetime-row { 
-        height: 9.5vh !important; 
-        font-size: 5.5vw !important; /* Scaled precisely to lock into a clean single line block */
-        border-bottom: 1px solid #ffffff !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    
-    .datetime-spacer {
-        width: 4vw !important;
-    }
-
-    #live-date, #live-time {
-        padding: 0 !important;
-        margin: 0 !important;
-        white-space: nowrap !important;
-    }
-    
-    .data-table { 
-        height: 77vh !important; 
-        border-collapse: collapse !important;
-    }
-
-    .data-table tr {
-        height: 20% !important; 
-    }
-    
-    .data-table th, .data-table td { 
-        border: 1px solid #ffffff !important; 
-        padding: 0px !important;
-    }
-
-    .data-table th { font-size: 4.2vw !important; }
-    .col-param     { font-size: 5.0vw !important; padding-left: 4px !important; letter-spacing: -0.2px !important; }
-    .col-count     { font-size: 7.8vw !important; } 
-    .col-unit      { font-size: 5.2vw !important; }
+.datetime-block {
+    background: #000000;
+    padding: 2px 3px;
+    border-bottom: 0.1px solid #cccccc; /* Changed to thin single line divider */
+    display: flex;
+    justify-content: space-between; 
+    color: #ffffff;
+    font-size: 8.5px; 
+    font-weight: 900;
+    white-space: nowrap;
+    overflow: hidden;
 }
+
+.grid-table {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Thin horizontal grid row lines mapped to a clean single line matrix */
+.grid-header, .grid-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-bottom: 0.7px solid #cccccc; 
+}
+
+.grid-header {
+    background: #000000;
+    height: 11px;
+    font-size: 8.5px; 
+    color: #00ffff;
+    font-weight: bold;
+}
+
+.grid-row {
+    flex-grow: 1;
+}
+
+ .grid-table .grid-row:last-child { 
+    border-bottom: none; 
+} 
+
+.col-1 { width: 52%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.col-2 { width: 22%; text-align: center; height: 100%; display: flex; align-items: center; justify-content: center; }
+.col-3 { width: 26%; text-align: center; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+/* Thin vertical border columns separation divider */
+.border-right {
+    border-right: 0.7px solid #cccccc; 
+}
+
+.label-cell {
+    color: #ff6600; 
+    font-size: 9.5px; 
+    font-weight: bold;
+    letter-spacing: -0.2px;
+}
+
+.value-cell {
+    color: #00ff00; 
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.unit-cell {
+    color:#ff3333; 
+    font-size: 8.5px;
+    font-weight: bold;
+}
+
+body.offline-mode .main-container { border-color: #ff0000; }
+body.offline-mode .title { color: #ff0000; }
+body.offline-mode .datetime-block { border-bottom-color: #ff0000; }
+body.offline-mode .grid-header, body.offline-mode .grid-row { border-bottom-color: #ff0000; }
+body.offline-mode .border-right { border-right-color: #ff0000; }
