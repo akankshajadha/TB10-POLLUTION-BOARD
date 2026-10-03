@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LED Matrix Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- LINK TO YOUR SEPARATE JAVASCRIPT FILE -->
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Construction Board</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Root Dashboard Canvas Frame Container -->
-  <div class="display-board">
-    
-    <!-- Row 1: Top Cyan Main Heading -->
-    <div class="main-header">CONSTRUCTION BOARD</div>
-    
-    <!-- Row 2: Centered Single-Line Date & Time Tracking Grid -->
-    <div class="datetime-row">
-      <span id="live-date">DATE: --/--/----</span>
-      <span class="datetime-spacer"></span>
-      <span id="live-time">TIME: --:--:-- AM</span>
+    <div class="main-container">
+        <!-- Screen Top Header Title -->
+        <div class="title" id="board-title">CONSTRUCTION BOARD</div>
+
+        <!-- Automatic Edge Separation Box Line Container -->
+        <div class="datetime-block">
+            <span id="live-date-box">DATE:--/--/----</span>
+            <span id="live-time-box">TIME:--:--:-- --</span>
+        </div>
+
+        <!-- Grid Matrix Layout Block Container -->
+        <div class="grid-table">
+            
+            <!-- Table Row Header Strip -->
+            <div class="grid-header">
+                <div class="col-1 border-right">PARAMETER</div>
+                <div class="col-2 border-right">COUNT</div>
+                <div class="col-3">UNIT</div>
+            </div>
+
+            <!-- Temperature Metrics Row Data -->
+            <div class="grid-row">
+                <div class="col-1 label-cell border-right">TEMPERATURE</div>
+                <div class="col-2 value-cell border-right" id="temp-val">--.-</div>
+                <div class="col-3 unit-cell">&deg;C</div>
+            </div>
+
+            <!-- Humidity Metrics Row Data -->
+            <div class="grid-row">
+                <div class="col-1 label-cell border-right">HUMIDITY</div>
+                <div class="col-2 value-cell border-right" id="hum-val">--</div>
+                <div class="col-3 unit-cell">%</div>
+            </div>
+
+            <!-- PM2.5 Metrics Row Data -->
+            <div class="grid-row">
+                <div class="col-1 label-cell border-right">PM2.5</div>
+                <div class="col-2 value-cell border-right" id="pm25-val">--</div>
+                <div class="col-3 unit-cell">&mu;g/m&sup3;</div>
+            </div>
+
+            <!-- PM10 Metrics Row Data -->
+            <div class="grid-row">
+                <div class="col-1 label-cell border-right">PM10</div>
+                <div class="col-2 value-cell border-right" id="pm10-val">--</div>
+                <div class="col-3 unit-cell">&mu;g/m&sup3;</div>
+            </div>
+            
+        </div>
     </div>
 
-    <!-- Row 3: Environmental Data Matrix Table Block -->
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th class="col-param">PARAMETER</th>
-          <th class="col-count">COUNT</th>
-          <th class="col-unit">UNIT</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Data Row 1: Temperature Section -->
-        <tr>
-          <td class="col-param" id="param-text-1">TEMPERATURE</td>
-          <td class="col-count" id="live-count-1">--.-</td>
-          <td class="col-unit" id="unit-text-1">&deg;C</td>
-        </tr>
-        <!-- Data Row 2: Humidity Section -->
-        <tr>
-          <td class="col-param" id="param-text-2">HUMIDITY</td>
-          <td class="col-count" id="live-count-2">--</td>
-          <td class="col-unit" id="unit-text-2">%</td>
-        </tr>
-        <!-- Data Row 3: PM2.5 Section -->
-        <tr>
-          <td class="col-param" id="param-text-3">PM2.5</td>
-          <td class="col-count" id="live-count-3">--</td>
-          <td class="col-unit" id="unit-text-3">&micro;g/m&sup3;</td>
-        </tr>
-        <!-- Data Row 4: PM10 Section -->
-        <tr>
-          <td class="col-param" id="param-text-4">PM10</td>
-          <td class="col-count" id="live-count-4">--</td>
-          <td class="col-unit" id="unit-text-4">&micro;g/m&sup3;</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
