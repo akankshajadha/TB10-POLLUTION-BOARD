@@ -19,7 +19,7 @@ body {
 .main-container {
     width: 100%;
     height: 100%;
-    border: 0.7px solid #cccccc;
+    border: 0.4px solid #cccccc;
     display: flex;
     flex-direction: column;
     background: #000000;
@@ -85,7 +85,7 @@ body {
 
 /* Thin vertical border columns separation divider */
 .border-right {
-    border-right: 0.7px solid #cccccc; 
+    border-right: 0.3px solid #cccccc; 
 }
 
 .label-cell {
