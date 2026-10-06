@@ -34,14 +34,14 @@ body {
     text-align: center;
     padding: 1px 0;
     background: #000000;
-    border-bottom: 1.9px solid #ffffff; /* Changed to thin single line divider */
+    border-bottom: 0.1px solid #ffffff; /* Changed to thin single line divider */
     white-space: nowrap;
 }
 
 .datetime-block {
     background: #000000;
     padding: 2px 3px;
-    border-bottom:1.9px solid #ffffff; /*Changed to thin single line divider */ 
+    border-bottom:0.1px solid #ffffff; /*Changed to thin single line divider */ 
     display: flex;
     justify-content: space-between; 
     color: #ffffff;
